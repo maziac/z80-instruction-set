@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
+import { Z80InstructionSet } from './z80InstructionSet';
+import { formatTiming, extractInstructionFrom } from './z80Utils';
 
 
 /**
@@ -36,7 +36,22 @@ export class HoverProvider implements vscode.HoverProvider {
             const wordRange = document.getWordRangeAtPosition(position);
             const word = document.getText(wordRange);
 
+            // Extracts the instruction
+            const rawInstruction = extractInstructionFrom(lineContents);  // TODO: allow also labels without ":" and allow multiple instructions per line.
+            
+            // Get most probably instruction
+            const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
+
             // return
+            const hoverTexts = new Array<string>();
+            hoverTexts.push('HEX: ' + instruction.getOpcode());
+            hoverTexts.push(instruction.getInstruction());
+            const hover = new vscode.Hover(hoverTexts);
+            resolve(hover);
+
+
+            // return
+            /*
             const hoverTexts = new Array<string>();
             hoverTexts.push('Blab lallalal');
             hoverTexts.push(lineContents);
@@ -44,6 +59,7 @@ export class HoverProvider implements vscode.HoverProvider {
             hoverTexts.push('');
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);
+            */
         });
     }
 
