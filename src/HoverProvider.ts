@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import { Z80InstructionSet } from './z80InstructionSet';
-import { formatTiming, extractInstructionFrom } from './z80Utils';
+import { extractInstruction } from './HoverUtils';
 
 
 /**
@@ -34,7 +34,7 @@ export class HoverProvider implements vscode.HoverProvider {
             const line = document.lineAt(position.line).text;
 
             // Extracts the instruction
-            const rawInstruction = this.extractInstruction(line, position.character);
+            const rawInstruction = extractInstruction(line, position.character);
             
             // Get most probably instruction
             const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
@@ -47,39 +47,6 @@ export class HoverProvider implements vscode.HoverProvider {
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);
         });
-    }
-
-
-    /**
-     * Extracts the instruction from an input line. index points to the
-     * index the mouse hovers over.
-     * @returns An uppercase string like "LD A,B".
-     */
-    protected extractInstruction(line: string, index: number): string {
-        // Get string beginning with word
-        let pos = index;
-        while (true) {
-            pos--;
-            if (pos < 0)
-                break;
-            const ch = line.charAt(pos);
-            if (/\s/.exec(ch))
-                break;
-        }
-        pos++;
-        let rightString = line.substr(pos);
-
-        // Now find end of instruction, i.e. until ";" or ":"
-        let len = 0;
-        for (const ch of rightString) {
-            if (ch == ';' || ch == ':')
-                break;
-            len++;
-        }
-        let rawInstruction = rightString.substr(0, len).trim().toUpperCase();
-        rawInstruction = rawInstruction.replace(/\s+/, ' ');
-
-        return rawInstruction;
     }
 
 }
