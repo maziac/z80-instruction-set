@@ -13,14 +13,14 @@ export class HoverProvider implements vscode.HoverProvider {
      * Called from vscode if the user hovers over a word.
      * @param document The current document.
      * @param position The position of the word for which the references should be found.
-     * @param options 
-     * @param token 
+     * @param options
+     * @param token
      */
     public provideHover(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken): Thenable<vscode.Hover> {
         return this.search(document, position);
     }
 
-    
+
     /**
      * Does a search for a word. I.e. finds all references of the word.
      * @param document The document that contains the word.
@@ -35,7 +35,7 @@ export class HoverProvider implements vscode.HoverProvider {
 
             // Extracts the instruction
             const rawInstruction = extractInstruction(line, position.character);
-            
+
             // Get most probably instruction
             const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
 
@@ -43,7 +43,12 @@ export class HoverProvider implements vscode.HoverProvider {
             const hoverTexts = new Array<string>();
             hoverTexts.push('HEX: ' + instruction.getOpcode());
             hoverTexts.push(instruction.getInstruction());
-            hoverTexts.push(rawInstruction);
+            const tStates = instruction.getZ80Timing();
+            let tStatesString = tStates[0].toString();
+            if (tStates[0] != tStates[1])
+                tStatesString += '/' + tStates[1].toString();
+            hoverTexts.push('T States: ' + tStatesString);
+            //hoverTexts.push(rawInstruction);
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);
         });
