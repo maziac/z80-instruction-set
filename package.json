@@ -1,0 +1,98 @@
+{
+    "name": "z80-instruction-set",
+    "displayName": "Z80 Instruction Set",
+    "version": "0.1.0",
+    "publisher": "maziac",
+    "description": "Provides documentation of the Z80 instructions on hovering.",
+    "author": {
+        "name": "Thomas Busse"
+    },
+    "license": "MIT",
+    "keywords": [
+        "assembler",
+        "z80",
+        "instruction set",
+        "opcodes"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/maziac/z80-instruction-set"
+    },
+    "engines": {
+        "vscode": "^1.35.1"
+    },
+    "icon": "assets/icon.png",
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "z80-instruction-set configuration",
+            "properties": {
+                "z80-instruction-set.enableHovering": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable/disable the display of instruction documentation on hovering."
+                },
+                "z80-instruction-set.source": {
+                    "type": "string",
+                    "default": "???",
+                    "description": "Choose the source for documentation."
+                },
+                "asm-code-lens.files": {
+                    "type": "string",
+                    "default": "**/*.{asm,inc,s,a80}",
+                    "description": "Choose what files to include e.g '**/*.{asm,inc,s,a80}'. If your assembler sources suffix is different then you can change it here."
+                }
+            }
+        },
+        "languages": [
+            {
+                "id": "asm-collection",
+                "extensions": [
+                    ".list",
+                    ".lis",
+                    ".a80",
+                    ".asm",
+                    ".inc",
+                    ".s"
+                ],
+                "aliases": [
+                    "Assembler file"
+                ]
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "nyc --reporter=text mocha --ui tdd -r ts-node/register test/**/*.ts"
+    },
+    "devDependencies": {
+        "@types/mocha": "^5.2.7",
+        "@types/node": "^13.1.6",
+        "mocha": "^7.0.0",
+        "nyc": "^15.0.0",
+        "typescript": "^3.7.4",
+        "vscode": "^1.1.36"
+    },
+    "dependencies": {
+        "assert": "^2.0.0",
+        "ts-node": "^8.6.2"
+    },
+    "nyc": {
+        "extension": [
+            ".ts"
+        ],
+        "include": [
+            "src/**/*.ts"
+        ],
+        "sourceMap": true
+    }
+}
