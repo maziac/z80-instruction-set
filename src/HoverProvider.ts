@@ -31,13 +31,10 @@ export class HoverProvider implements vscode.HoverProvider {
     {
         return new Promise<vscode.Hover>((resolve, reject) => {
             // Check for local label
-            const lineContents = document.lineAt(position.line).text;
-
-            const wordRange = document.getWordRangeAtPosition(position);
-            const word = document.getText(wordRange);
+            const line = document.lineAt(position.line).text;
 
             // Extracts the instruction
-            const rawInstruction = extractInstructionFrom(lineContents);  // TODO: allow also labels without ":" and allow multiple instructions per line.
+            const rawInstruction = this.extractInstruction(line, position.character);
             
             // Get most probably instruction
             const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
@@ -46,21 +43,43 @@ export class HoverProvider implements vscode.HoverProvider {
             const hoverTexts = new Array<string>();
             hoverTexts.push('HEX: ' + instruction.getOpcode());
             hoverTexts.push(instruction.getInstruction());
+            hoverTexts.push(rawInstruction);
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);
-
-
-            // return
-            /*
-            const hoverTexts = new Array<string>();
-            hoverTexts.push('Blab lallalal');
-            hoverTexts.push(lineContents);
-            hoverTexts.push(word);
-            hoverTexts.push('');
-            const hover = new vscode.Hover(hoverTexts);
-            resolve(hover);
-            */
         });
+    }
+
+
+    /**
+     * Extracts the instruction from an input line. index points to the
+     * index the mouse hovers over.
+     * @returns An uppercase string like "LD A,B".
+     */
+    protected extractInstruction(line: string, index: number): string {
+        // Get string beginning with word
+        let pos = index;
+        while (true) {
+            pos--;
+            if (pos < 0)
+                break;
+            const ch = line.charAt(pos);
+            if (/\s/.exec(ch))
+                break;
+        }
+        pos++;
+        let rightString = line.substr(pos);
+
+        // Now find end of instruction, i.e. until ";" or ":"
+        let len = 0;
+        for (const ch of rightString) {
+            if (ch == ';' || ch == ':')
+                break;
+            len++;
+        }
+        let rawInstruction = rightString.substr(0, len).trim().toUpperCase();
+        rawInstruction = rawInstruction.replace(/\s+/, ' ');
+
+        return rawInstruction;
     }
 
 }
