@@ -41,13 +41,13 @@ export class HoverProvider implements vscode.HoverProvider {
 
             // return
             const hoverTexts = new Array<string>();
-            hoverTexts.push('HEX: ' + instruction.getOpcode());
-            hoverTexts.push(instruction.getInstruction());
             const tStates = instruction.getZ80Timing();
             let tStatesString = tStates[0].toString();
             if (tStates[0] != tStates[1])
                 tStatesString += '/' + tStates[1].toString();
-            hoverTexts.push('T States: ' + tStatesString);
+            hoverTexts.push(instruction.getOpcode() + '; ' + instruction.getInstruction() + '; T=' + tStatesString);
+            hoverTexts.push('F: ' + instruction.getFlags());
+            hoverTexts.push('Pseudo code: ' + instruction.getDescription());
             //hoverTexts.push(rawInstruction);
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);

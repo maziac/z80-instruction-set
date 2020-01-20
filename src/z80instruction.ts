@@ -9,6 +9,8 @@ export class Z80Instruction {
     private cpcTiming: number[];
     private opcode: string;
     private size: number;
+    private flags: string;
+    private description: string;
 
     // Derived information (will be cached for performance reasons)
     private mnemonic: string | undefined;
@@ -18,7 +20,7 @@ export class Z80Instruction {
     constructor(
             instruction: string,
             z80Timing: string, z80M1Timing: string, cpcTiming: string,
-            opcode: string, size: string) {
+            opcode: string, size: string, flags: string, description: string) {
 
         this.instruction = instruction;
         this.z80Timing = parseTimings(z80Timing);
@@ -26,6 +28,8 @@ export class Z80Instruction {
         this.cpcTiming = parseTimings(cpcTiming);
         this.opcode = opcode;
         this.size = parseInt(size);
+        this.flags = flags;
+        this.description = description;
     }
 
     /**
@@ -68,6 +72,24 @@ export class Z80Instruction {
      */
     public getSize(): number {
         return this.size;
+    }
+
+    /**
+     * @returns The flags.
+     */
+    public getFlags(): string {
+        if (this.flags == undefined)
+            return "?";
+        if (this.flags == "")
+            return "none";
+        return this.flags;
+    }
+
+    /**
+     * @returns The description of the instruction.
+     */
+    public getDescription(): string {
+        return this.description;
     }
 
     /**

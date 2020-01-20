@@ -15,12 +15,14 @@ export class Z80InstructionSet {
 
             // Parses the raw instruction
             const instruction = new Z80Instruction(
-                    rawData[0], // rawInstruction
-                    rawData[1], // z80Timing
-                    rawData[2], // z80M1Timing
-                    rawData[3], // cpcTiming
-                    rawData[4], // opcode
-                    rawData[5]); // size
+                rawData[0], // rawInstruction
+                rawData[1], // z80Timing
+                rawData[2], // z80M1Timing
+                rawData[3], // cpcTiming
+                rawData[4], // opcode
+                rawData[5], // size
+                rawData[6], // flags
+                rawData[7]); // description
 
             // Prepares a map by mnemonic for performance reasons
             const mnemonic = instruction.getMnemonic();
