@@ -135,4 +135,67 @@ suite('HoverProvider', () => {
         assert.equal("RRC C", res);
     });
 
+
+    test('extractInstruction Z80N instructions', () => {
+        let res = extractInstruction("LDIX", 0);
+        assert.equal("LDIX", res);
+        res = extractInstruction("LDWS", 0);
+        assert.equal("LDWS", res);
+        res = extractInstruction("LDIRX", 0);
+        assert.equal("LDIRX", res);
+        res = extractInstruction("LDDX", 0);
+        assert.equal("LDDX", res);
+        res = extractInstruction("LDDRX", 0);
+        assert.equal("LDDRX", res);
+        res = extractInstruction("LDPIRX", 0);
+        assert.equal("LDPIRX", res);
+        res = extractInstruction("OUTINB", 0);
+        assert.equal("OUTINB", res);
+        res = extractInstruction("MUL D,E", 0);
+        assert.equal("MUL D,E", res);
+        res = extractInstruction("ADD HL,A", 0);
+        assert.equal("ADD HL,A", res);
+        res = extractInstruction("ADD DE,A", 0);
+        assert.equal("ADD DE,A", res);
+        res = extractInstruction("ADD BC,A", 0);
+        assert.equal("ADD BC,A", res);
+        res = extractInstruction("ADD HL,NUMBER", 0);
+        assert.equal("ADD HL,NUMBER", res);
+        res = extractInstruction("ADD DE,NUMBER", 0);
+        assert.equal("ADD DE,NUMBER", res);
+        res = extractInstruction("ADD BC,NUMBER", 0);
+        assert.equal("ADD BC,NUMBER", res);
+        res = extractInstruction("SWAPNIB", 0);
+        assert.equal("SWAPNIB", res);
+        res = extractInstruction("MIRROR", 0);
+        assert.equal("MIRROR", res);
+        res = extractInstruction("PUSH NUMBER", 0);
+        assert.equal("PUSH NUMBER", res);
+        res = extractInstruction("NEXTREG REG,NUM", 0);
+        assert.equal("NEXTREG REG,NUM", res);
+        res = extractInstruction("NEXTREG REG,A", 0);
+        assert.equal("NEXTREG REG,A", res);
+        res = extractInstruction("PIXELDN", 0);
+        assert.equal("PIXELDN", res);
+        res = extractInstruction("PIXELAD", 0);
+        assert.equal("PIXELAD", res);
+        res = extractInstruction("SETAE", 0);
+        assert.equal("SETAE", res);
+        res = extractInstruction("TEST NUM", 0);
+        assert.equal("TEST NUM", res);
+
+        res = extractInstruction("BSLA DE,B", 0);
+        assert.equal("BSLA DE,B", res);
+        res = extractInstruction("BSRA DE,B", 0);
+        assert.equal("BSRA DE,B", res);
+        res = extractInstruction("BSRL DE,B", 0);
+        assert.equal("BSRL DE,B", res);
+        res = extractInstruction("BSRF DE,B", 0);
+        assert.equal("BSRF DE,B", res);
+        res = extractInstruction("BRLC DE,B", 0);
+        assert.equal("BRLC DE,B", res);
+        res = extractInstruction("JP (C)", 0);
+        assert.equal("JP (C)", res);
+    });
+
 });
