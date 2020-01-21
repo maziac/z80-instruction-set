@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import { Z80InstructionSet } from './z80InstructionSet';
-import { extractInstruction } from './HoverUtils';
+import { extractInstruction, getLegend } from './HoverUtils';
 
 
 /**
@@ -41,13 +41,18 @@ export class HoverProvider implements vscode.HoverProvider {
 
             // return
             const hoverTexts = new Array<string>();
+            const instr = instruction.getInstruction();
             const tStates = instruction.getZ80Timing();
             let tStatesString = tStates[0].toString();
             if (tStates[0] != tStates[1])
                 tStatesString += '/' + tStates[1].toString();
-            hoverTexts.push(instruction.getOpcode() + '; ' + instruction.getInstruction() + '; T=' + tStatesString);
+            hoverTexts.push(instruction.getOpcode() + '; ' + instr + '; T=' + tStatesString);
             hoverTexts.push('F: ' + instruction.getFlags());
-            hoverTexts.push('Pseudo code: ' + instruction.getDescription());
+            const description = instruction.getDescription()
+            hoverTexts.push('Pseudo code: ' + description);
+            const legend = getLegend(instr);
+            if (legend)
+                hoverTexts.push('Legend: ' + legend);
             //hoverTexts.push(rawInstruction);
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);
