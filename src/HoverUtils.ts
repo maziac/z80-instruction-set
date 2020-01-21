@@ -1,4 +1,4 @@
-
+import * as assert from 'assert';
 
 /**
  * Extracts the instruction from an input line. index points to the
@@ -70,7 +70,100 @@ export function getLegend(instruction: string): string {
     // Create string from array
     const legend = legendArr.join(', ');
 
-    TEST
+    // TODO: TEST
 
     return legend;
+}
+
+
+/**
+ * Creates the  description of the flags from the 'flags' string.
+ * @param flags E.g. "***?1-"
+ * @returns E.g "SZH are affected, P/V is unknown, N is 1, C is not affected.
+ */
+export function getFlagsDescription(flags: string): string {
+   /* Flag meanings:
+    -               Flag unaffected
+    *               Flag affected
+    0               Flag reset
+    1               Flag set
+    ?               Unknown
+    P               Parity-Flag used as Parity
+    V               Parity-Flag used as Overflow-flag
+    Note: P, V are interpreted as *
+    Order: SZHPNC
+    */
+
+    // Safety checks
+    if (flags == undefined)
+        return "undefined";
+   if (flags.length == 0)
+        return 'None affected';
+    assert(flags.length == 6, 'Problem with length of flags definition!');
+
+    const flagArray = ['S', 'Z', 'H', 'P', 'N', 'C'];
+    let affected = '';
+    let notAffected = '';
+    let reset = '';
+    let set = '';
+    let unknown = '';
+
+    // Returns 'is' if string length is one, otherwise 'are'
+    let IsAre = (s: string) => {
+        if (s.length == 1)
+            return 'is';
+        return 'are';
+    }
+
+    // Affected
+    for (let i = 0; i < 6; i++) {
+        const ch = flags.charAt(i);
+        if (ch == '*' || ch == 'P' || ch == 'V')
+            affected += flagArray[i];
+    }
+
+    // Not affected
+    for (let i = 0; i < 6; i++) {
+        if (flags.charAt(i) == '-')
+            notAffected += flagArray[i];
+    }
+
+    // Reset
+    for (let i = 0; i < 6; i++) {
+        if (flags.charAt(i) == '0')
+            reset += flagArray[i];
+    }
+
+    // Set
+    for (let i = 0; i < 6; i++) {
+        if (flags.charAt(i) == '1')
+            set += flagArray[i];
+    }
+
+    // Unkown
+    for (let i = 0; i < 6; i++) {
+        if (flags.charAt(i) == '?')
+            unknown += flagArray[i];
+    }
+
+    // Concatenate strings
+    let result = '';
+    if (affected.length > 0)
+        result += affected + ' ' + IsAre(affected) + ' affected, ';
+    if (reset.length > 0)
+        result += reset + ' ' + IsAre(reset) + ' 0, ';
+    if (set.length > 0)
+        result += set + ' ' + IsAre(set) + ' 1, ';
+    if (notAffected.length > 0)
+        result += notAffected + ' ' + IsAre(notAffected) + ' not affected, ';
+    if (unknown.length > 0)
+        result += unknown + ' ' + IsAre(unknown) + ' unknown, ';
+    assert(result.length > 0, 'Problem with flags definition!');
+
+    // Remove last ','
+    result = result.substr(0, result.length - 2);
+
+    // TODO: TEST
+
+    return result;
 }

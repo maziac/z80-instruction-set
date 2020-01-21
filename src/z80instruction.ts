@@ -78,10 +78,6 @@ export class Z80Instruction {
      * @returns The flags.
      */
     public getFlags(): string {
-        if (this.flags == undefined)
-            return "?";
-        if (this.flags == "")
-            return "none";
         return this.flags;
     }
 

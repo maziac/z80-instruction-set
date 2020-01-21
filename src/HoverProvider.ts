@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import { Z80InstructionSet } from './z80InstructionSet';
-import { extractInstruction, getLegend } from './HoverUtils';
+import { extractInstruction, getLegend, getFlagsDescription } from './HoverUtils';
 
 
 /**
@@ -47,7 +47,8 @@ export class HoverProvider implements vscode.HoverProvider {
             if (tStates[0] != tStates[1])
                 tStatesString += '/' + tStates[1].toString();
             hoverTexts.push(instruction.getOpcode() + '; ' + instr + '; T=' + tStatesString);
-            hoverTexts.push('F: ' + instruction.getFlags());
+            const flags = instruction.getFlags();
+            hoverTexts.push('Flags: ' + getFlagsDescription(flags));
             const description = instruction.getDescription()
             hoverTexts.push('Pseudo code: ' + description);
             const legend = getLegend(instr);
