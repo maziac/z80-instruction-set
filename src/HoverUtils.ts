@@ -104,7 +104,7 @@ export function getFlagsMdTable(flags: string): string {
     assert(flags.length == 6, 'Problem with length of flags definition!');
 
     // Add a '|' after each character
-    const arr = flags.split('');
+    const arr = Array.from(flags);
     const tf = arr.join('|');
 
     // Create table
