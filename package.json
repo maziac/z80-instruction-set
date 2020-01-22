@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -38,16 +38,6 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Enable/disable the display of instruction documentation on hovering."
-                },
-                "z80-instruction-set.source": {
-                    "type": "string",
-                    "default": "???",
-                    "description": "Choose the source for documentation."
-                },
-                "asm-code-lens.files": {
-                    "type": "string",
-                    "default": "**/*.{asm,inc,s,a80}",
-                    "description": "Choose what files to include e.g '**/*.{asm,inc,s,a80}'. If your assembler sources suffix is different then you can change it here."
                 }
             }
         },

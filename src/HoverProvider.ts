@@ -1,7 +1,7 @@
 'use strict';
 import * as vscode from 'vscode';
 import { Z80InstructionSet } from './z80InstructionSet';
-import { extractInstruction, getLegend, getFlagsDescription } from './HoverUtils';
+import { extractInstruction, getLegend, getFlagsMdTable } from './HoverUtils';
 
 
 /**
@@ -39,24 +39,68 @@ export class HoverProvider implements vscode.HoverProvider {
             // Get most probably instruction
             const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
 
-            // return
+            // Create hover text
+            const instr = instruction.getInstruction();
+            const opcode = instruction.getOpcode();
+            const tStates = instruction.getZ80Timing();
+            let tStatesString = tStates[0].toString();
+            if (tStates[0] != tStates[1])
+                tStatesString += '/' + tStates[1].toString();
+            const flags = instruction.getFlags();
+            //const flagsDescription = getFlagsDescription(flags);
+            const flagsTable = getFlagsMdTable(flags);
+            const legend = getLegend(instr);
+            const description = instruction.getDescription()
+
+            // Create one markdown string
+            const mdText = new vscode.MarkdownString(
+`# ${instr}
+
+**Opcode:** ${opcode}
+
+${flagsTable}
+
+**T-states:** ${tStatesString}
+
+**Pseudo code:** ${description}
+
+`
+            );
+            // Legend
+            if (legend)
+                mdText.appendMarkdown('**Legend:** ' + legend);
+
+            // Create hover-string
+            const hover = new vscode.Hover(mdText);
+            resolve(hover);
+
+            /*
+                '**' + instruction.getOpcode() + '**; ' + instr + '; T=' + tStatesString
+            hoverTexts.push('**' + instruction.getOpcode() + '**; ' + instr + '; T=' + tStatesString);
+             hoverTexts.push('**Flags:** ' + getFlagsDescription(flags));
+            hoverTexts.push('**Pseudo code:** ' + description);
+            if (legend)
+                hoverTexts.push('**Legend:** ' + legend);
+
+
+
             const hoverTexts = new Array<string>();
             const instr = instruction.getInstruction();
             const tStates = instruction.getZ80Timing();
             let tStatesString = tStates[0].toString();
             if (tStates[0] != tStates[1])
                 tStatesString += '/' + tStates[1].toString();
-            hoverTexts.push(instruction.getOpcode() + '; ' + instr + '; T=' + tStatesString);
+            hoverTexts.push('**' + instruction.getOpcode() + '**; ' + instr + '; T=' + tStatesString);
             const flags = instruction.getFlags();
-            hoverTexts.push('Flags: ' + getFlagsDescription(flags));
+            hoverTexts.push('**Flags:** ' + getFlagsDescription(flags));
             const description = instruction.getDescription()
-            hoverTexts.push('Pseudo code: ' + description);
+            hoverTexts.push('**Pseudo code:** ' + description);
             const legend = getLegend(instr);
             if (legend)
-                hoverTexts.push('Legend: ' + legend);
-            //hoverTexts.push(rawInstruction);
+                hoverTexts.push('**Legend:** ' + legend);
             const hover = new vscode.Hover(hoverTexts);
             resolve(hover);
+            */
         });
     }
 

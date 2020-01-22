@@ -44,8 +44,8 @@ export function getLegend(instruction: string): string {
     // Check for a 'b'
     if (instruction.indexOf('b') >= 0)
         legendArr.push('b=0-7 (bit)');
-    // Check for a 'n'
-    if (instruction.indexOf('n') >= 0)
+    // Check for a single 'n'
+    if (/[^n]n(?!n)/.exec(instruction))
         legendArr.push('n=0-255');
     // Check for a 'nn'
     if (instruction.indexOf('nn') >= 0)
@@ -70,9 +70,47 @@ export function getLegend(instruction: string): string {
     // Create string from array
     const legend = legendArr.join(', ');
 
-    // TODO: TEST
-
     return legend;
+}
+
+
+/**
+ * Returns the flags as table for markdown.
+ * @param flags E.g. "***?1-"
+ * @returns E.g
+ * "|S|Z|H|P|N|C|
+ *  |-|-|-|-|-|-|
+ *  |*|*|*|?|1|-|"
+ */
+export function getFlagsMdTable(flags: string): string {
+    /* Flag meanings:
+     -               Flag unaffected
+     *               Flag affected
+     0               Flag reset
+     1               Flag set
+     ?               Unknown
+     P               Parity-Flag used as Parity
+     V               Parity-Flag used as Overflow-flag
+     Note: P, V are interpreted as *
+     Order: SZHPNC
+     */
+
+    // Safety checks
+    if (flags == undefined)
+        return "";
+
+    if (flags.length == 0)
+        flags = '------';
+    assert(flags.length == 6, 'Problem with length of flags definition!');
+
+    // Add a '|' after each character
+    const arr = flags.split('');
+    const tf = arr.join('|');
+
+    // Create table
+    const table = '|S|Z|H|P|N|C|\n|-|-|-|-|-|-|\n|' + tf + '|';
+
+    return table;
 }
 
 
@@ -162,8 +200,6 @@ export function getFlagsDescription(flags: string): string {
 
     // Remove last ','
     result = result.substr(0, result.length - 2);
-
-    // TODO: TEST
 
     return result;
 }
