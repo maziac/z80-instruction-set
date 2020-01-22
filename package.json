@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -41,6 +41,12 @@
                 }
             }
         },
+        "commands": [
+            {
+                "command": "z80-instruction-set.show-all-instructions",
+                "title": "Show all Z80 instructions"
+            }
+        ],
         "languages": [
             {
                 "id": "asm-collection",

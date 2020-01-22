@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.0
+- WebView to show Z80 instructions.
+
 ## 0.4.0
 - Markdown as hovering string.
 - More unit tests.
