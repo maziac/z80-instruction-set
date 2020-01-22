@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.0
+- Link added to google search.
+
 ## 0.5.0
 - WebView to show Z80 instructions.
 

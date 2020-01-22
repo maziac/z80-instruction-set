@@ -45,8 +45,14 @@ export class Z80InstructionsView {
 		let tableRows = '';
 
 		for (const instrArray of z80InstructionSetRawData) {
-			const name = instrArray[0];
 			const descr = instrArray[7];
+			let name = instrArray[0];
+
+			// Add link to search in google
+			let escInstr = name.replace(/\+/, '\\+'); // TODO: escaping
+			escInstr = escInstr.replace(/\s/, '+');
+			name = `<a href=https://www.google.com/search?q=Z80+instruction+"${escInstr}")>${name}</a>`;
+
 			tableRows += '<tr> <td width="20%">' + name + '</td> <td width="80%">' + descr + '</td> </tr>\n';
 		}
 

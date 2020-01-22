@@ -52,9 +52,11 @@ export class HoverProvider implements vscode.HoverProvider {
             const legend = getLegend(instr);
             const description = instruction.getDescription()
 
+            const escInstr = instr.replace(/\s/, '+');
+
             // Create one markdown string
             const mdText = new vscode.MarkdownString(
-`# ${instr}
+`# [${instr}](https://www.google.com/search?q=Z80+instruction+"${escInstr}")
 
 **Opcode:** ${opcode}
 
@@ -73,34 +75,6 @@ ${flagsTable}
             // Create hover-string
             const hover = new vscode.Hover(mdText);
             resolve(hover);
-
-            /*
-                '**' + instruction.getOpcode() + '**; ' + instr + '; T=' + tStatesString
-            hoverTexts.push('**' + instruction.getOpcode() + '**; ' + instr + '; T=' + tStatesString);
-             hoverTexts.push('**Flags:** ' + getFlagsDescription(flags));
-            hoverTexts.push('**Pseudo code:** ' + description);
-            if (legend)
-                hoverTexts.push('**Legend:** ' + legend);
-
-
-
-            const hoverTexts = new Array<string>();
-            const instr = instruction.getInstruction();
-            const tStates = instruction.getZ80Timing();
-            let tStatesString = tStates[0].toString();
-            if (tStates[0] != tStates[1])
-                tStatesString += '/' + tStates[1].toString();
-            hoverTexts.push('**' + instruction.getOpcode() + '**; ' + instr + '; T=' + tStatesString);
-            const flags = instruction.getFlags();
-            hoverTexts.push('**Flags:** ' + getFlagsDescription(flags));
-            const description = instruction.getDescription()
-            hoverTexts.push('**Pseudo code:** ' + description);
-            const legend = getLegend(instr);
-            if (legend)
-                hoverTexts.push('**Legend:** ' + legend);
-            const hover = new vscode.Hover(hoverTexts);
-            resolve(hover);
-            */
         });
     }
 
