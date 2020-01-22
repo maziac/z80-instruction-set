@@ -1,7 +1,9 @@
 # Z80 Instruction Set
 
 This is a hover provider for vscode.
-I.e. if you hover over a Z80 instruction (e.g. "LD A,5") the opcode for this instruction is displayed.
+I.e. if you hover over a Z80 instruction (e.g. "LD A,5") the opcode and a description for the instruction is displayed.
+
+![](assets/hover.jpg)
 
 Note: It does also show the opcodes for the Z80N instructions (ZX Spectrum Next).
 
@@ -15,6 +17,20 @@ The extension is called "Z80 Instruction Set".
 It supports the following assembler file extensions:
 .asm, .s, .inc, .a80.
 -->
+
+
+# Configuration
+
+- "z80-instruction-set.enableHovering": Enable/disable the hovering. I.e. enable/disable the extension.
+- "z80-instruction-set.z80Link": Link to Z80 documentation. You can change this e.g. to point to your local Z80 manual pdf. Use an empty string "" to disable.
+
+
+# Misc
+
+To view all instruction open the command palette (press F1) and enter "Show all Z80 instructions".
+A WebView opens with the instructions.
+
+![](assets/Z80InstructionsView.jpg)
 
 
 # Acknowledgememts

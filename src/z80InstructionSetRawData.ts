@@ -404,9 +404,12 @@ export const z80InstructionSetRawData = [
 
 	// Z80N
 	["LDIX", "16", "", "", "ED A4", "", "", "If [HL] != A then [DE] := [HL], DE := DE+1; HL := HL+1; BC := BC-1"],
+	["LDWS", "14", "", "", "ED A5", "", "***V0-", "[DE] := [HL], L := L+1, D := D+1, flags are like 'INC D'. This is used for vertically copying bytes to the Layer 2 display."],
 	["LDIRX", "21/16", "", "", "ED B4", "", "", "Repeat LDIX until BC == 0"],
 	["LDDX", "16", "", "", "ED AC", "", "", "If [HL] != A then [DE] := [HL], DE := DE-1; HL := HL-1; BC := BC-1"],
 	["LDDRX", "21/16", "", "", "ED BC", "", "", "Repeat LDIX until BC == 0"],
+	["LDPIRX", "21/16", "", "", "ED B7", "", "", "repeat, t := [HL&FFF8h+E&7h], if t != A then [DE] := t,  DE := DE+1, BC := BC-1, until BC == 0"],
+	["OUTINB", "16", "", "", "ED 90", "", "??????", "port[BC] := [HL], HL++, behaves like OUTI but does not decrement B"],
 	["MUL D,E", "8", "", "", "ED 30", "", "", "DE := D*E"],
 	["ADD HL,A", "8", "", "", "ED 31", "", "", "HL := HL+A"],
 	["ADD DE,A", "8", "", "", "ED 32", "", "", "DE := DE+A"],
@@ -430,9 +433,5 @@ export const z80InstructionSetRawData = [
 	["BSRF DE,B", "8", "", "", "ED 2B", "", "", "1-fill shift right of DE, (B&1Fh) times"],
 	["BRLC DE,B", "8", "", "", "ED 2C", "", "", "If B.4 == 0 then 0-fill shift left of DE, (B&0Fh) times, else 0-fill shift right of DE, 16-(B&0Fh) times"],
 	["JP (C)", "13", "", "", "ED 98", "", "", "The JP (C) sets bottom 14 bits of current PC to value read from I/O port: PC.13-0 := port[C]<<6) (can be used to execute code block read from a disk stream)."],
-
-	["LDWS", "14", "", "", "ED A5", "", ""],
-	["LDPIRX", "21/16", "", "", "ED B7", "", ""],
-	["OUTINB", "16", "", "", "ED 90", "", ""],
 
 ];

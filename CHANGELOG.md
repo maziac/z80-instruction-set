@@ -1,7 +1,11 @@
 # Changelog
 
+## 0.6.1
+- Link changed to customizable.
+- All opcodes included.
+
 ## 0.6.0
-- Link added to google search.
+- Link added.
 
 ## 0.5.0
 - WebView to show Z80 instructions.
