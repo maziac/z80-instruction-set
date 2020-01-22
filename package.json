@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -38,6 +38,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "Enable/disable the display of instruction documentation on hovering."
+                },
+                "z80-instruction-set.z80Link": {
+                    "type": "string",
+                    "default": "https://zany80.github.io/documentation/Z80/UserManual.html",
+                    "description": "Link to Z80 documentation. You can change this e.g. to point to your local Z80 manual pdf. Use an empty string \"\" to disable."
                 }
             }
         },

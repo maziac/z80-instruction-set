@@ -40,7 +40,7 @@ export class HoverProvider implements vscode.HoverProvider {
             const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
 
             // Create hover text
-            const instr = instruction.getInstruction();
+            let instr = instruction.getInstruction();
             const opcode = instruction.getOpcode();
             const tStates = instruction.getZ80Timing();
             let tStatesString = tStates[0].toString();
@@ -52,11 +52,15 @@ export class HoverProvider implements vscode.HoverProvider {
             const legend = getLegend(instr);
             const description = instruction.getDescription()
 
-            const escInstr = instr.replace(/\s/, '+');
+            // Link
+            const settings = vscode.workspace.getConfiguration('z80-instruction-set');
+            const link = settings.z80Link || "";
+            if (link != "")
+                instr = `[${instr}](${link})`;
 
             // Create one markdown string
             const mdText = new vscode.MarkdownString(
-`# [${instr}](https://www.google.com/search?q=Z80+instruction+"${escInstr}")
+`# ${instr}
 
 **Opcode:** ${opcode}
 

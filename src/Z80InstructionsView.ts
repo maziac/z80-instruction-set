@@ -42,16 +42,19 @@ export class Z80InstructionsView {
 	 * Creates one html table with the Z80 instructions.
 	 */
 	protected createZ80HtmlTable(): string {
-		let tableRows = '';
+		// Link
+		const settings = vscode.workspace.getConfiguration('z80-instruction-set');
+		const link = settings.z80Link || "";
 
+		// Create table
+		let tableRows = '';
 		for (const instrArray of z80InstructionSetRawData) {
 			const descr = instrArray[7];
 			let name = instrArray[0];
 
-			// Add link to search in google
-			let escInstr = name.replace(/\+/, '\\+'); // TODO: escaping
-			escInstr = escInstr.replace(/\s/, '+');
-			name = `<a href=https://www.google.com/search?q=Z80+instruction+"${escInstr}")>${name}</a>`;
+			// Add link
+			if (link != "")
+				name = `<a href="${link}")>${name}</a>`;
 
 			tableRows += '<tr> <td width="20%">' + name + '</td> <td width="80%">' + descr + '</td> </tr>\n';
 		}
