@@ -22,7 +22,7 @@ It supports the following assembler file extensions:
 # Configuration
 
 - "z80-instruction-set.enableHovering": Enable/disable the hovering. I.e. enable/disable the extension.
-- "z80-instruction-set.z80Link": Link to Z80 documentation. You can change this e.g. to point to your local Z80 manual pdf. Use an empty string "" to disable.
+- "z80-instruction-set.z80Link": Link to Z80 documentation. You can change this e.g. to point to some other html documentation. This simply adds a link to all instruction to make it easier to open external documentation if the hover information is not sufficient. Use an empty string "" to disable.
 
 
 # Misc
