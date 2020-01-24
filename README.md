@@ -27,7 +27,7 @@ It supports the following assembler file extensions:
 
 # Misc
 
-To view all instruction open the command palette (press F1) and enter "Show all Z80 instructions".
+To view all instructions open the command palette (press F1) and enter "Show all Z80 instructions".
 A WebView opens with the instructions.
 
 ![](assets/Z80InstructionsView.jpg)
