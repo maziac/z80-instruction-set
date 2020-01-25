@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.2
+- Description of "BRLC DE,B", "SETAE" and "PUSH nn" corrected thanks to Ped7g.
+
 ## 0.6.1
 - Link changed to customizable.
 - All opcodes included.

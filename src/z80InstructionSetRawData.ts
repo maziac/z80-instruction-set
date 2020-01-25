@@ -419,19 +419,19 @@ export const z80InstructionSetRawData = [
 	["ADD BC,nn", "16", "", "", "ED 36 nn nn", "", "", "BC := BC+nn"],
 	["SWAPNIB", "8", "", "", "ED 23", "", "", "A.0-3 <=> A.4-7"],
 	["MIRROR", "8", "", "", "ED 24", "", "", "A.76543210 := A.01234567, mirrors (reverses the order) of bits in the accumulator"],
-	["PUSH nn", "23", "", "", "ED 8A nn.h nn.l", "", "", "SP := SP-1, [SP] := nn.l, SP := SP-1, [SP] := nn.h, note: the value is pushed as big-endian"],
+	["PUSH nn", "23", "", "", "ED 8A nn.h nn.l", "", "", "SP := SP-1, [SP] := nn.h, SP := SP-1, [SP] := nn.l"],
 	["NEXTREG n1,n2", "20", "", "", "ED 91 n1 n2", "", "", "port[243Bh] := n1, port[253Bh] := n2"],
 	["NEXTREG n,A", "17", "", "", "ED 92 n", "", "", "port[243Bh] := n, port[253Bh] := A"],
 	["PIXELDN", "8", "", "", "ED 93", "", "", "Updates the address in HL to move down by one line of pixels"],
 	["PIXELAD", "8", "", "", "ED 94", "", "", "Takes E and D as the X/Y coordinate of a point and calculates the address of the byte containing this pixel in the pixel area of standard ULA screen 0, storing it in HL"],
-	["SETAE", "8", "", "", "ED 95", "", "", "A.(7-E&0xh) := 1, SETAE takes the bit number to set from E (only the low 3 bits) and sets whole A to value of that bit, but counted from top to bottom (E=0 will produce A:=$80, E=7 will produce A:=$01). This works as pixel mask for ULA bitmap modes, when E is 0..255 x-coordinate."],
+	["SETAE", "8", "", "", "ED 95", "", "", "A := 0, A.(7-E&07h) := 1, SETAE takes the bit number to set from E (only the low 3 bits) and sets the bit of A while clearing the other bits. I.e. if E is 2 and A is FFh before this operation then A will be 20h (=00100000b) after the operation. This instruction is used as pixel mask for ULA bitmap modes, when E is 0..255 x - coordinate."],
 	["TEST n", "11", "", "", "ED 27 n", "","***V?*", "A & n"],
 
 	["BSLA DE,B", "8", "", "", "ED 28", "", "", "0-fill shift left of DE, (B&1Fh) times"],
 	["BSRA DE,B", "8", "", "", "ED 29", "", "", "Sticky shift right of DE, (B&1Fh) times, bit 7 of D keeps it's value"],
 	["BSRL DE,B", "8", "", "", "ED 2A", "", "", "0-fill shift right of DE, (B&1Fh) times"],
 	["BSRF DE,B", "8", "", "", "ED 2B", "", "", "1-fill shift right of DE, (B&1Fh) times"],
-	["BRLC DE,B", "8", "", "", "ED 2C", "", "", "If B.4 == 0 then 0-fill shift left of DE, (B&0Fh) times, else 0-fill shift right of DE, 16-(B&0Fh) times"],
+	["BRLC DE,B", "8", "", "", "ED 2C", "", "", "Rotate DE left, (B&0Fh) times, (Note: there is no rotate-right equivalent, a rotate-right can be achieved by rotating left (16-x) times.)"],
 	["JP (C)", "13", "", "", "ED 98", "", "", "The JP (C) sets bottom 14 bits of current PC to value read from I/O port: PC.13-0 := port[C]<<6) (can be used to execute code block read from a disk stream)."],
 
 ];
