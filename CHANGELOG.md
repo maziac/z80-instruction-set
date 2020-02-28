@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.3
+- Fixed T-states for ADD HL,nn
+
 ## 0.6.2
 - Description of "BRLC DE,B", "SETAE" and "PUSH nn" corrected thanks to Ped7g.
 
