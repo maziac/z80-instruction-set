@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.4
+- Incorporated some changes from here https://github.com/theNestruo/z80-asm-meter-vscode/issues/17 (although they didn't had a direct impact to z80-instruction-set)
+
 ## 0.6.3
 - Fixed T-states for ADD HL,nn
 

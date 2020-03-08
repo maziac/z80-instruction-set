@@ -200,8 +200,16 @@ export class Z80Instruction {
             return this.isIXWithOffsetScore(candidateOperand);
         case "IY+o":
             return this.isIYWithOffsetScore(candidateOperand);
+        case "IXh":
+            return this.isIXhScore(candidateOperand);
+        case "IXl":
+            return this.isIXlScore(candidateOperand);
         case "IXp":
             return this.isIX8bitScore(candidateOperand);
+        case "IYh":
+            return this.isIYhScore(candidateOperand);
+        case "IYl":
+            return this.isIYlScore(candidateOperand);
         case "IYq":
             return this.isIY8bitScore(candidateOperand);
         case "p":
@@ -233,7 +241,7 @@ export class Z80Instruction {
      * @returns true if the candidate operand must match verbatim the operand of the instruction
      */
     private isVerbatimOperand(operand: string): boolean {
-        return !!operand.match(/^(A|AF'?|BC?|N?C|DE?|E|HL?|L|I|I[XY][hl]?|R|SP|N?Z|M|P[OE]?)$/);
+        return !!operand.match(/^(A|AF'?|BC?|N?C|DE?|E|HL?|L|I|I[XY]|R|SP|N?Z|M|P[OE]?)$/);
     }
 
     /**
@@ -244,8 +252,7 @@ export class Z80Instruction {
      */
     private verbatimOperandScore(expectedOperand: string, candidateOperand: string): number {
 
-        return ((candidateOperand === expectedOperand.toUpperCase())
-                || (candidateOperand === "IXU" && expectedOperand === "IXh")) ? 1 : 0;
+        return (candidateOperand===expectedOperand.toUpperCase())? 1:0;
     }
 
     /**
@@ -302,6 +309,22 @@ export class Z80Instruction {
     }
 
     /**
+      * @param operand the candidate operand
+      * @returns 1 if the operand is the high part of the IX index register, 0 otherwise
+      */
+    private isIXhScore(operand: string): number {
+        return operand.match(/^(IX[HU]|XH|HX)$/)? 1:0;
+    }
+
+    /**
+     * @param operand the candidate operand
+     * @returns 1 if the operand is the low part of the IX index register, 0 otherwise
+     */
+    private isIXlScore(operand: string): number {
+        return operand.match(/^(IXL|XL|LX)$/)? 1:0;
+    }
+
+    /**
      * @param operand the candidate operand
      * @returns 1 if the operand is the IY index register with an optional offset, 0 otherwise
      */
@@ -315,6 +338,22 @@ export class Z80Instruction {
      */
     private isIX8bitScore(operand: string): number {
         return operand.match(/^(IX[HLU]|X[HL]|[HL]X)$/) ? 1 : 0;
+    }
+
+    /**
+        * @param operand the candidate operand
+        * @returns 1 if the operand is the high part of the IY index register, 0 otherwise
+        */
+    private isIYhScore(operand: string): number {
+        return operand.match(/^(IY[HU]|YH|HY)$/)? 1:0;
+    }
+
+    /**
+     * @param operand the candidate operand
+     * @returns 1 if the operand is the low part of the IY index register, 0 otherwise
+     */
+    private isIYlScore(operand: string): number {
+        return operand.match(/^(IYL|YL|LY)$/)? 1:0;
     }
 
     /**
