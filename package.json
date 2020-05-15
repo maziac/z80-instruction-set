@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "0.6.4",
+    "version": "1.0.0",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -72,13 +72,15 @@
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
         "compile": "tsc -watch -p ./",
+        "preinstall": "npx npm-force-resolutions",
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "nyc --reporter=text mocha --ui tdd -r ts-node/register test/**/*.ts"
     },
     "devDependencies": {
         "@types/mocha": "^5.2.7",
         "@types/node": "^13.1.8",
-        "mocha": "^7.0.0",
+        "minimist": "^1.2.5",
+        "mocha": "^7.1.2",
         "nyc": "^15.0.0",
         "typescript": "^3.7.5",
         "vscode": "^1.1.36"
@@ -86,6 +88,9 @@
     "dependencies": {
         "assert": "^2.0.0",
         "ts-node": "^8.6.2"
+    },
+    "resolutions": {
+        "minimist": "^1.2.5"
     },
     "nyc": {
         "extension": [
