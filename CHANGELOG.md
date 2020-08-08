@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.1
+- Added donate button.
+
 ## 1.0.0
 - Fixed vulnerability.
 
