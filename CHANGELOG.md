@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.2
+- Allowed for "//" C-style comments (fix by oxidaan)
+
 ## 1.0.1
 - Added donate button.
 

@@ -19,11 +19,18 @@ export function extractInstruction(line: string, index: number): string {
     pos++;
     let rightString = line.substr(pos);
 
-    // Now find end of instruction, i.e. until ";" or ":"
-    let len = 0;
+    // Now find end of instruction, i.e. until ";", "//" or ":"
+    let len=0;
+    let prev='';
     for (const ch of rightString) {
-        if (ch == ';' || ch == ':')
+        if (ch==';' || ch==':')
             break;
+        if (ch=='/' && prev=='/') {
+            // C-style comment "//"       // // is c++ style comment
+            len--;
+            break;
+        }
+        prev=ch;
         len++;
     }
     let rawInstruction = rightString.substr(0, len).trim().toUpperCase();
