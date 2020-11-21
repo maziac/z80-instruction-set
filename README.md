@@ -42,6 +42,11 @@ A WebView opens with the instructions.
 ![](assets/Z80InstructionsView.jpg)
 
 
+# Hovers in Debug Mode
+
+vscode turns the normal hovers off if in debug mode. To make them visible press the "ALT" key while hovering.
+
+
 # Acknowledgememts
 
 Main parts of the code (the z80 instruction decoding) has been taken from [theNuestro](https://github.com/theNestruo)'s [z80-asm-code-meter](https://github.com/theNestruo/z80-asm-meter-vscode) which is licensed under LGPL-3.0.
