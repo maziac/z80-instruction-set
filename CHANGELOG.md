@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.3
+- Check for undefined instruction added.
+
 ## 1.0.2
 - Allowed for "//" C-style comments (fix by oxidaan)
 

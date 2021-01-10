@@ -39,6 +39,12 @@ export class HoverProvider implements vscode.HoverProvider {
             // Get most probably instruction
             const instruction = Z80InstructionSet.instance.parseInstruction(rawInstruction);
 
+            // Check if an instruction has been found
+            if (!instruction) {
+                resolve(undefined);
+                return;
+            }
+
             // Create hover text
             let instr = instruction.getInstruction();
             const opcode = instruction.getOpcode();
