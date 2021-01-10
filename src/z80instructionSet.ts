@@ -47,7 +47,7 @@ export class Z80InstructionSet {
         }
 
         // Locates instruction
-        let bestCandidate = undefined;
+        let bestCandidate;
         let bestScore = 0;
         for (let i = 0, n = candidates.length; i < n; i++) {
             const candidate = candidates[i];

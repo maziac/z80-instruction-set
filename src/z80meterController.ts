@@ -1,4 +1,4 @@
-import { Disposable, StatusBarItem, TextEditor, window, workspace } from 'vscode';
+import { Disposable, StatusBarItem, window, workspace } from 'vscode';
 import { Z80Block } from './z80Block';
 
 export class Z80MeterController {

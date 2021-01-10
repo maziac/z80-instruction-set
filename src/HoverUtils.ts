@@ -72,7 +72,7 @@ export function getLegend(instruction: string): string {
 
     // Check if empty
     if (legendArr.length == 0)
-        return undefined;
+        return undefined as any;
 
     // Create string from array
     const legend = legendArr.join(', ');
@@ -89,7 +89,7 @@ export function getLegend(instruction: string): string {
  *  |-|-|-|-|-|-|
  *  |*|*|*|?|1|-|"
  */
-export function getFlagsMdTable(flags: string): string {
+export function getFlagsMdTable(flags: string|undefined): string {
     /* Flag meanings:
      -               Flag unaffected
      *               Flag affected

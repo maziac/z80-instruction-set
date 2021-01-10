@@ -1,4 +1,3 @@
-import * as assert from 'assert';
 import * as vscode from 'vscode';
 import { z80InstructionSetRawData } from './z80InstructionSetRawData';
 
