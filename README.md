@@ -6,7 +6,7 @@ If you like "Z80 Instruction Set" please consider supporting it.
 	<img src="assets/button_donate_sp.png" />
 </a>
 &nbsp;&nbsp;
-<a href="https://www.paypal.com/donate/?hosted_button_id=K6NNLZCTN3UV4&locale.x=en_DE&Z3JncnB0="	title="PayPal">
+<a href="https://www.paypal.com/donate/?hosted_button_id=K6NNLZCTN3UV4&locale.x=en_DE&Z3JncnB0=" title="PayPal">
 	<img src="assets/button_donate_pp.png" />
 </a>
 
