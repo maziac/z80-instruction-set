@@ -21,7 +21,7 @@ I.e. if you hover over a Z80 instruction (e.g. "LD A,5") the opcode and a descri
 Note: It does also show the opcodes for the Z80N instructions (ZX Spectrum Next).
 
 
-## Installation
+# Installation
 
 Install through Visual Studio Code Marketplace.
 The extension is called "Z80 Instruction Set".
@@ -44,6 +44,9 @@ To view all instructions open the command palette (press F1) and enter "Show all
 A WebView opens with the instructions.
 
 ![](assets/Z80InstructionsView.jpg)
+
+
+To search the instructions press "CTRL-F".
 
 
 # Hovers in Debug Mode
