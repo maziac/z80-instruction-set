@@ -25,7 +25,7 @@ export class Z80InstructionsView {
 	 */
 	constructor() {
 		// create vscode panel view
-		this.vscodePanel = vscode.window.createWebviewPanel('', 'Z80 Instructions', { preserveFocus: true, viewColumn: vscode.ViewColumn.Nine }, { enableScripts: false });
+		this.vscodePanel = vscode.window.createWebviewPanel('', 'Z80 Instructions', {preserveFocus: true, viewColumn: vscode.ViewColumn.Nine}, {enableScripts: false, enableFindWidget: true, retainContextWhenHidden: true});
 	}
 
 

@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.4
+- CTRL-F allowed in instruction webview. Allows searching the instructions.
+
 ## 1.0.3
 - Check for undefined instruction added.
 
