@@ -41,7 +41,7 @@ export class HoverProvider implements vscode.HoverProvider {
 
             // Check if an instruction has been found
             if (!instruction) {
-                resolve(undefined);
+                resolve(undefined as any);
                 return;
             }
 
