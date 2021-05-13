@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.5
+- Thanks to @alexanderk23 for the fixes:
+	- OUTI/OUTD pre-decrements the B register
+	- OUT (C), 0 outputs 0 on NMOS Z80s, 255 on CMOS Z80s
+	- Minor typos
+
 ## 1.0.4
 - CTRL-F allowed in instruction webview. Allows searching the instructions.
 

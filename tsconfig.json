@@ -1,17 +1,15 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
         "target": "es6",
-        "noImplicitAny": false,
-        "removeComments": false,
-        "noUnusedLocals": true,
-        "noImplicitThis": true,
-        "inlineSourceMap": false,
+        "module": "commonjs",
+        "noImplicitAny": true,
         "sourceMap": true,
         "outDir": "./out",
-        "preserveConstEnums": true,
-        "strictNullChecks": true,
-        "noUnusedParameters": false,
-        "allowJs": true
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        }
     }
 }

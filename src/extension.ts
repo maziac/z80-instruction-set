@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Check for every change.
 	context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(event => {
-        configure(context, event);
+        configure(context);
     }));
 
     // Register command once.
@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 /**
  * Reads the confguration.
  */
-function configure(context: vscode.ExtensionContext, event?) {
+function configure(context: vscode.ExtensionContext) {
     const settings = vscode.workspace.getConfiguration('z80-instruction-set');
 
     // Note: don't add 'language' property, otherwise other extension with similar file pattern may not work.
@@ -48,7 +48,7 @@ function configure(context: vscode.ExtensionContext, event?) {
     }
 }
 
-let regHoverProvider;
+let regHoverProvider: vscode.Disposable;
 
 
 
