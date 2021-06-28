@@ -31,20 +31,19 @@ function configure(context: vscode.ExtensionContext) {
     // If the identifier is missing it also don't help to define it in package.json. And if "id" would be used it clashes again with other extensions.
     const asmFiles: vscode.DocumentSelector = { scheme: "file", pattern: settings.files};
 
-     // Enable/disable hovering
-    if(settings.enableHovering) {
-        if(!regHoverProvider) {
-            // Register
-            regHoverProvider = vscode.languages.registerHoverProvider(asmFiles, new HoverProvider());
-            context.subscriptions.push(regHoverProvider);
-        }
+    // Deregister
+    if (regHoverProvider) {
+        regHoverProvider.dispose();
+        const i = context.subscriptions.indexOf(regHoverProvider);
+        context.subscriptions.splice(i, 1);
+        regHoverProvider = undefined;
     }
-    else {
-        if(regHoverProvider) {
-            // Deregister
-            regHoverProvider.dispose();
-            regHoverProvider = undefined;
-        }
+
+    // Enable hovering
+    if(settings.enableHovering) {
+        // Register
+        regHoverProvider = vscode.languages.registerHoverProvider(asmFiles, new HoverProvider());
+        context.subscriptions.push(regHoverProvider);
     }
 }
 
