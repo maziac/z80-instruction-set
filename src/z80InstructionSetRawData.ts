@@ -369,20 +369,20 @@ export const z80InstructionSetRawData = [
 	["SL1 r", "8", "10", "2", "CB 30+r", "2", "**0P0*", "1-fill shift left r, CY<7<6<5<4<3<2<1<0<'1', i.e. r := 2*r+1" ], // alt. SLL r
 	["SLA (HL)", "15", "17", "4", "CB 26", "2", "**0P0*", "0-fill shift left [HL], CY<7<6<5<4<3<2<1<0<'0', i.e. [HL] := 2*[HL]" ],
 	["SLA (IX+o)", "23", "25", "7", "DD CB o 26", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]" ],
-	["SLA (IY+o)", "23", "25", "7", "FD CB o 26", "4", "**0P0*", "0-fill shift left [IY+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IY+o] := 2*[IY+o]" ],
+	["SLA (IY+o)", "23", "25", "7", "FD CB o 26", "4", "**0P0*", "0-fill shift left [IY+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IY+o] := 2*[IY+o]"],
 	["SLA r", "8", "10", "2", "CB 20+r", "2", "**0P0*", "0-fill shift left r, CY<7<6<5<4<3<2<1<0<'0', i.e. r := 2*r" ],
 	["SLL (HL)", "15", "17", "4", "CB 36", "2", "**0P0*", "1-fill shift left [HL], CY<7<6<5<4<3<2<1<0<'1', i.e. [HL] := 2*[HL]+1"], // alt. SL1 (HL)
 	["SLL (IX+o)", "23", "25", "7", "DD CB o 36", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1"], // alt. SL1 (IX+o)
 	["SLL (IY+o)", "23", "25", "7", "FD CB o 36", "4", "**0P0*", "1-fill shift left [IY+o], CY<7<6<5<4<3<2<1<0<'1', i.e. [IY+o] := 2*[IY+o]+1"], // alt. SL1 (IY+o)
 	["SLL r", "8", "10", "2", "CB 30+r", "2", "**0P0*", "1-fill shift left r, CY<7<6<5<4<3<2<1<0<'1', i.e. r := 2*r+1"], // alt. SL1 r
-	["SRA (HL)", "15", "17", "4", "CB 2E", "2", "**0P0*", "Sticky shift right [HL], 7>7>6>5>4>3>2>1>0>CY', i.e. [HL] := [HL]/2 (signed), bit 7 keeps it's value"],
-	["SRA (IX+o)", "23", "25", "7", "DD CB o 2E", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY', i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value" ],
-	["SRA (IY+o)", "23", "25", "7", "FD CB o 2E", "4", "**0P0*", "Sticky shift right [IY+o], 7>7>6>5>4>3>2>1>0>CY', i.e. [IY+o] := [IY+o]/2 (signed), bit 7 keeps it's value" ],
-	["SRA r", "8", "10", "2", "CB 28+r", "2", "**0P0*", "Sticky shift right r, 7>7>6>5>4>3>2>1>0>CY', i.e. r := r/2 (signed), bit 7 keeps it's value" ],
-	["SRL (HL)", "15", "17", "4", "CB 3E", "2", "**0P0*", "0-fill shift right [HL], '0'>7>6>5>4>3>2>1>0>CY', i.e. [HL] := [HL]/2 (unsigned)"],
-	["SRL (IX+o)", "23", "25", "7", "DD CB o 3E", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY', i.e. [IX+o] := [IX+o]/2 (unsigned)" ],
-	["SRL (IY+o)", "23", "25", "7", "FD CB o 3E", "4", "**0P0*", "0-fill shift right [IY+o], '0'>7>6>5>4>3>2>1>0>CY', i.e. [IY+o] := [IY+o]/2 (unsigned)" ],
-	["SRL r", "8", "10", "2", "CB 38+r", "2", "**0P0*", "0-fill shift right r, '0'>7>6>5>4>3>2>1>0>CY', i.e. r := r/2 (unsigned)" ],
+	["SRA (HL)", "15", "17", "4", "CB 2E", "2", "**0P0*", "Sticky shift right [HL], 7>7>6>5>4>3>2>1>0>CY, i.e. [HL] := [HL]/2 (signed), bit 7 keeps it's value"],
+	["SRA (IX+o)", "23", "25", "7", "DD CB o 2E", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value" ],
+	["SRA (IY+o)", "23", "25", "7", "FD CB o 2E", "4", "**0P0*", "Sticky shift right [IY+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IY+o] := [IY+o]/2 (signed), bit 7 keeps it's value" ],
+	["SRA r", "8", "10", "2", "CB 28+r", "2", "**0P0*", "Sticky shift right r, 7>7>6>5>4>3>2>1>0>CY, i.e. r := r/2 (signed), bit 7 keeps it's value" ],
+	["SRL (HL)", "15", "17", "4", "CB 3E", "2", "**0P0*", "0-fill shift right [HL], '0'>7>6>5>4>3>2>1>0>CY, i.e. [HL] := [HL]/2 (unsigned)"],
+	["SRL (IX+o)", "23", "25", "7", "DD CB o 3E", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned)" ],
+	["SRL (IY+o)", "23", "25", "7", "FD CB o 3E", "4", "**0P0*", "0-fill shift right [IY+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IY+o] := [IY+o]/2 (unsigned)" ],
+	["SRL r", "8", "10", "2", "CB 38+r", "2", "**0P0*", "0-fill shift right r, '0'>7>6>5>4>3>2>1>0>CY, i.e. r := r/2 (unsigned)" ],
 	["SUB (HL)", "7", "8", "2", "96", "1", "***V1*", "A: = A-[HL]" ],
 	["SUB (IX+o)", "19", "21", "7", "DD 96 o", "3", "***V1*", "A: = A-[IX+o]" ],
 	["SUB (IY+o)", "19", "21", "7", "FD 96 o", "3", "***V1*", "A: = A-[IY+o]" ],
@@ -401,6 +401,84 @@ export const z80InstructionSetRawData = [
 	["XOR IYl", "8", "10", "2", "FD AD", "2", "***P00", "A := A ^ IYl"],
 	["XOR n", "7", "8", "2", "EE n", "2", "***P00", "A := A ^ n" ],
 	["XOR r", "4", "5", "1", "A8+r", "1", "***P00", "A := A ^ r"],
+
+	// Undocumented opcodes, shift through (IX/IY+o) plus result stored in register
+	["RLC (IX+o),B", "23", "25", "7", "DD CB o 00", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in B."],
+	["RLC (IX+o),C", "23", "25", "7", "DD CB o 01", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in C."],
+	["RLC (IX+o),D", "23", "25", "7", "DD CB o 02", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in D."],
+	["RLC (IX+o),E", "23", "25", "7", "DD CB o 03", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in E."],
+	["RLC (IX+o),H", "23", "25", "7", "DD CB o 04", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in H."],
+	["RLC (IX+o),L", "23", "25", "7", "DD CB o 05", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in L."],
+	["RLC (IX+o),A", "23", "25", "7", "DD CB o 07", "4", "**0P0*", "Rotate [IX+o] left with CY, CY<7<6<5<4<3<2<1<0<7. Store result additionally in A."],
+
+	["RRC (IX+o),B", "23", "25", "7", "DD CB o 08", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in B."],
+	["RRC (IX+o),C", "23", "25", "7", "DD CB o 09", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in C."],
+	["RRC (IX+o),D", "23", "25", "7", "DD CB o 0A", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in D."],
+	["RRC (IX+o),E", "23", "25", "7", "DD CB o 0B", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in E."],
+	["RRC (IX+o),H", "23", "25", "7", "DD CB o 0C", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in H."],
+	["RRC (IX+o),L", "23", "25", "7", "DD CB o 0D", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in L."],
+	["RRC (IX+o),A", "23", "25", "7", "DD CB o 0F", "4", "**0P0*", "Rotate [IX+o] right with CY, 0>7>6>5>4>3>2>1>0>CY. Store result additionally in A."],
+
+	["RL (IX+o),B", "23", "25", "7", "DD CB o 10", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in B."],
+	["RL (IX+o),C", "23", "25", "7", "DD CB o 11", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in C."],
+	["RL (IX+o),D", "23", "25", "7", "DD CB o 12", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in D."],
+	["RL (IX+o),E", "23", "25", "7", "DD CB o 13", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in E."],
+	["RL (IX+o),H", "23", "25", "7", "DD CB o 14", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in H."],
+	["RL (IX+o),L", "23", "25", "7", "DD CB o 15", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in L."],
+	["RL (IX+o),A", "23", "25", "7", "DD CB o 17", "4", "**0P0*", "Rotate [IX+o] left through CY, CY<7<6<5<4<3<2<1<0<CY. Store result additionally in A."],
+
+	["RR (IX+o),B", "23", "25", "7", "DD CB o 18", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in B."],
+	["RR (IX+o),C", "23", "25", "7", "DD CB o 19", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in C."],
+	["RR (IX+o),D", "23", "25", "7", "DD CB o 1A", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in D."],
+	["RR (IX+o),E", "23", "25", "7", "DD CB o 1B", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in E."],
+	["RR (IX+o),H", "23", "25", "7", "DD CB o 1C", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in H."],
+	["RR (IX+o),L", "23", "25", "7", "DD CB o 1D", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in L."],
+	["RR (IX+o),A", "23", "25", "7", "DD CB o 1F", "4", "**0P0*", "Rotate [IX+o] right through CY, CY>7>6>5>4>3>2>1>0>CY. Store result additionally in A."],
+
+	["SLA (IX+o),B", "23", "25", "7", "DD CB o 20", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in B."],
+	["SLA (IX+o),C", "23", "25", "7", "DD CB o 21", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in C."],
+	["SLA (IX+o),D", "23", "25", "7", "DD CB o 22", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in D."],
+	["SLA (IX+o),E", "23", "25", "7", "DD CB o 23", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in E."],
+	["SLA (IX+o),H", "23", "25", "7", "DD CB o 24", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in H."],
+	["SLA (IX+o),L", "23", "25", "7", "DD CB o 25", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in L."],
+	["SLA (IX+o),A", "23", "25", "7", "DD CB o 27", "4", "**0P0*", "0-fill shift left [IX+o], CY<7<6<5<4<3<2<1<0<'0', i.e. [IX+o] := 2*[IX+o]. Store result additionally in A."],
+
+	["SRA (IX+o),B", "23", "25", "7", "DD CB o 28", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in B."],
+	["SRA (IX+o),C", "23", "25", "7", "DD CB o 29", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in C."],
+	["SRA (IX+o),D", "23", "25", "7", "DD CB o 2A", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in D."],
+	["SRA (IX+o),E", "23", "25", "7", "DD CB o 2B", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in E."],
+	["SRA (IX+o),H", "23", "25", "7", "DD CB o 2C", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in H."],
+	["SRA (IX+o),L", "23", "25", "7", "DD CB o 2D", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in L."],
+	["SRA (IX+o),A", "23", "25", "7", "DD CB o 2F", "4", "**0P0*", "Sticky shift right [IX+o], 7>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (signed), bit 7 keeps it's value. Store result additionally in A."],
+
+	["SLL (IX+o),B", "23", "25", "7", "DD CB o 30", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in B."],
+	["SLL (IX+o),C", "23", "25", "7", "DD CB o 31", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in C."],
+	["SLL (IX+o),D", "23", "25", "7", "DD CB o 32", "4", "**0P0*", "01-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in D."],
+	["SLL (IX+o),E", "23", "25", "7", "DD CB o 33", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in E."],
+	["SLL (IX+o),H", "23", "25", "7", "DD CB o 34", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in H."],
+	["SLL (IX+o),L", "23", "25", "7", "DD CB o 35", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in L."],
+	["SLL (IX+o),A", "23", "25", "7", "DD CB o 37", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in A."],
+
+	["SRL (IX+o),r", "23", "25", "7", "DD CB o 38", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in register r."],
+	/*
+	["SRL (IX+o),C", "23", "25", "7", "DD CB o 39", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in C."],
+	["SRL (IX+o),D", "23", "25", "7", "DD CB o 3A", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in D."],
+	["SRL (IX+o),E", "23", "25", "7", "DD CB o 3B", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in E."],
+	["SRL (IX+o),H", "23", "25", "7", "DD CB o 3C", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in H."],
+	["SRL (IX+o),L", "23", "25", "7", "DD CB o 3D", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in L."],
+	["SRL (IX+o),A", "23", "25", "7", "DD CB o 3F", "4", "**0P0*", "0-fill shift right [IX+o], '0'>7>6>5>4>3>2>1>0>CY, i.e. [IX+o] := [IX+o]/2 (unsigned). Store result additionally in A."],
+	*/
+
+	["RES b,(IX+o)", "23", "25", "7", "DD CB o 86+8*b", "4", "", "[IX+o].b := 0"],
+	["RES b,(IX+o),B", "23", "25", "7", "DD CB o 30", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in B."],
+	["RES b,(IX+o),C", "23", "25", "7", "DD CB o 31", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in C."],
+	["RES b,(IX+o),D", "23", "25", "7", "DD CB o 32", "4", "**0P0*", "01-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in D."],
+	["RES b,(IX+o),E", "23", "25", "7", "DD CB o 33", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in E."],
+	["RES b,(IX+o),H", "23", "25", "7", "DD CB o 34", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in H."],
+	["SLL (IX+o),L", "23", "25", "7", "DD CB o 35", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in L."],
+	["SLL (IX+o),A", "23", "25", "7", "DD CB o 37", "4", "**0P0*", "1-fill shift left [IX+o], i.e. [IX+o] := 2*[IX+o]+1. Store result additionally in A."],
+
+
 
 	// Z80N
 	["LDIX", "16", "", "", "ED A4", "", "", "If [HL] != A then [DE] := [HL], DE := DE+1; HL := HL+1; BC := BC-1"],
