@@ -1,6 +1,7 @@
 # Changelog
 
-# 1.0.6
+# 1.1.0
+- Added undocumented IX/IY bit instructions (DDCB, FDCB).
 - Removed unused files.
 - Fixed indexed access recognition if no index is used, e.g. "sla (iy)" is recognized now.
 
