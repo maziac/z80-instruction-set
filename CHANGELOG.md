@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.0.6
+- Removed unused files.
+
 ## 1.0.5
 - Thanks to @alexanderk23 for the fixes:
 	- OUTI/OUTD pre-decrements the B register

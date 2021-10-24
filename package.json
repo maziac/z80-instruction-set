@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -78,9 +78,9 @@
         "publish": "vsce publish"
     },
     "devDependencies": {
-        "@types/mocha": "^8.2.0",
-        "@types/node": "^13.13.39",
-        "@types/vscode": "^1.52.0",
-        "typescript": "^4.1.3"
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^16.11.4",
+        "@types/vscode": "^1.61.0",
+        "typescript": "^4.4.4"
     }
 }
