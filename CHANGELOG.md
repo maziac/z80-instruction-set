@@ -2,6 +2,7 @@
 
 # 1.0.6
 - Removed unused files.
+- Fixed indexed access recognition if no index is used, e.g. "sla (iy)" is recognized now.
 
 ## 1.0.5
 - Thanks to @alexanderk23 for the fixes:

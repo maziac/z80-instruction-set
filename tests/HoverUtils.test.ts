@@ -90,6 +90,9 @@ suite('HoverUtils', () => {
             let res = extractInstruction("ld a,(IX+9)", 0);
             assert.equal("LD A,(IX+9)", res);
 
+            res = extractInstruction("ld a,(IX)", 0);
+            assert.equal("LD A,(IX)", res);
+
             res = extractInstruction("ex af,af'", 0);
             assert.equal("EX AF,AF'", res);
 
