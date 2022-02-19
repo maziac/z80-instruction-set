@@ -144,7 +144,7 @@ export function getFlagsDescription(flags: string): string {
         return "undefined";
    if (flags.length == 0)
         return 'None affected';
-    assert(flags.length == 6, 'Problem with length of flags definition!');
+    assert(flags.length == 6, 'Problem with length of flags definition!');  // NOSONAR
 
     const flagArray = ['S', 'Z', 'H', 'P', 'N', 'C'];
     let affected = '';

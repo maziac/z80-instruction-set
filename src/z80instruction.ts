@@ -1,4 +1,5 @@
-import { parseTimings, extractMnemonicOf, extractOperandsOf } from './z80Utils';
+import {resourceUsage} from 'process';
+import {parseTimings, extractMnemonicOf, extractOperandsOf} from './z80Utils';
 
 export class Z80Instruction {
 
@@ -18,9 +19,9 @@ export class Z80Instruction {
     private implicitAccumulatorSyntaxAllowed: boolean | undefined;
 
     constructor(
-            instruction: string,
-            z80Timing: string, z80M1Timing: string, cpcTiming: string,
-            opcode: string, size: string, flags: string, description: string) {
+        instruction: string,
+        z80Timing: string, z80M1Timing: string, cpcTiming: string,
+        opcode: string, size: string, flags: string, description: string) {
 
         this.instruction = instruction;
         this.z80Timing = parseTimings(z80Timing);
@@ -93,8 +94,8 @@ export class Z80Instruction {
      */
     public getMnemonic(): string {
         return this.mnemonic
-                ? this.mnemonic
-                : this.mnemonic = extractMnemonicOf(this.instruction);
+            ? this.mnemonic
+            : this.mnemonic = extractMnemonicOf(this.instruction);
     }
 
     /**
@@ -102,8 +103,8 @@ export class Z80Instruction {
      */
     public getOperands(): string[] {
         return this.operands
-                ? this.operands
-                : this.operands = extractOperandsOf(this.instruction);
+            ? this.operands
+            : this.operands = extractOperandsOf(this.instruction);
     }
 
     /**
@@ -194,40 +195,43 @@ export class Z80Instruction {
 
         // Depending on the
         switch (expectedOperand) {
-        case "r":
-            return this.is8bitRegisterScore(candidateOperand);
-        case "IX+o":
-            return this.isIXWithOffsetScore(candidateOperand);
-        case "IY+o":
-            return this.isIYWithOffsetScore(candidateOperand);
-        case "IXh":
-            return this.isIXhScore(candidateOperand);
-        case "IXl":
-            return this.isIXlScore(candidateOperand);
-        case "IXp":
-            return this.isIX8bitScore(candidateOperand);
-        case "IYh":
-            return this.isIYhScore(candidateOperand);
-        case "IYl":
-            return this.isIYlScore(candidateOperand);
-        case "IYq":
-            return this.isIY8bitScore(candidateOperand);
-        case "p":
-            return this.is8bitRegisterReplacingHLByIX8bitScore(candidateOperand);
-        case "q":
-            return this.is8bitRegisterReplacingHLByIY8bitScore(candidateOperand);
-        case "0": // IM 0, RST 0, and OUT (C), 0
-        case "1": // IM 1
-        case "2": // IM 2
-            if (candidateOperand === expectedOperand) {
-                return 1; // (exact match for better OUT (C),0 detection)
-            }
+            case "r":
+                return this.is8bitRegisterScore(candidateOperand);
+            case "IX+o":
+                return this.isIXWithOffsetScore(candidateOperand);
+            case "IY+o":
+                return this.isIYWithOffsetScore(candidateOperand);
+            case "IXh":
+                return this.isIXhScore(candidateOperand);
+            case "IXl":
+                return this.isIXlScore(candidateOperand);
+            case "IXp":
+                return this.isIX8bitScore(candidateOperand);
+            case "IYh":
+                return this.isIYhScore(candidateOperand);
+            case "IYl":
+                return this.isIYlScore(candidateOperand);
+            case "IYq":
+                return this.isIY8bitScore(candidateOperand);
+            case "p":
+                return this.is8bitRegisterReplacingHLByIX8bitScore(candidateOperand);
+            case "q":
+                return this.is8bitRegisterReplacingHLByIY8bitScore(candidateOperand);
+            case "0": // IM 0, RST 0, and OUT (C), 0
+            case "1": // IM 1
+            case "2": // IM 2
+                if (candidateOperand === expectedOperand) {
+                    return 1; // (exact match for better OUT (C),0 detection)
+                }
             // falls-through
-        default:
-            // (due possibility of using constants, labels, and expressions in the source code,
-            // there is no proper way to discriminate: b, n, nn, o, 0, 8H, 10H, 20H, 28H, 30H, 38H;
-            // but uses a "best effort" to discard registers)
-            return this.isAnyRegister(
+            default:
+                // First check for numbers
+                if(this.compareNumbers(candidateOperand, expectedOperand))
+                    return 1.0;
+                // (due possibility of using constants, labels, and expressions in the source code,
+                // there is no proper way to discriminate: b, n, nn, o.
+                // but uses a "best effort" to discard registers)
+                return this.isAnyRegister(
                     this.isIndirectionOperand(candidateOperand, false)
                         ? this.extractIndirection(candidateOperand)
                         : candidateOperand)
@@ -252,7 +256,7 @@ export class Z80Instruction {
      */
     private verbatimOperandScore(expectedOperand: string, candidateOperand: string): number {
 
-        return (candidateOperand===expectedOperand.toUpperCase())? 1:0;
+        return (candidateOperand === expectedOperand.toUpperCase()) ? 1 : 0;
     }
 
     /**
@@ -280,8 +284,8 @@ export class Z80Instruction {
 
         // Compares the expression inside the indirection
         return this.isIndirectionOperand(candidateOperand, false)
-                ? this.operandScore(this.extractIndirection(expectedOperand), this.extractIndirection(candidateOperand), false)
-                : 0;
+            ? this.operandScore(this.extractIndirection(expectedOperand), this.extractIndirection(candidateOperand), false)
+            : 0;
     }
 
     /**
@@ -313,7 +317,7 @@ export class Z80Instruction {
       * @returns 1 if the operand is the high part of the IX index register, 0 otherwise
       */
     private isIXhScore(operand: string): number {
-        return operand.match(/^(IX[HU]|XH|HX)$/)? 1:0;
+        return operand.match(/^(IX[HU]|XH|HX)$/) ? 1 : 0;
     }
 
     /**
@@ -321,7 +325,7 @@ export class Z80Instruction {
      * @returns 1 if the operand is the low part of the IX index register, 0 otherwise
      */
     private isIXlScore(operand: string): number {
-        return operand.match(/^(IXL|XL|LX)$/)? 1:0;
+        return operand.match(/^(IXL|XL|LX)$/) ? 1 : 0;
     }
 
     /**
@@ -345,7 +349,7 @@ export class Z80Instruction {
         * @returns 1 if the operand is the high part of the IY index register, 0 otherwise
         */
     private isIYhScore(operand: string): number {
-        return operand.match(/^(IY[HU]|YH|HY)$/)? 1:0;
+        return operand.match(/^(IY[HU]|YH|HY)$/) ? 1 : 0;
     }
 
     /**
@@ -353,7 +357,7 @@ export class Z80Instruction {
      * @returns 1 if the operand is the low part of the IY index register, 0 otherwise
      */
     private isIYlScore(operand: string): number {
-        return operand.match(/^(IYL|YL|LY)$/)? 1:0;
+        return operand.match(/^(IYL|YL|LY)$/) ? 1 : 0;
     }
 
     /**
@@ -388,5 +392,44 @@ export class Z80Instruction {
      */
     private isAnyRegister(operand: string): boolean {
         return !!operand.match(/(^(A|AF'?|BC?|C|DE?|E|HL?|L|I|I[XY][UHL]?|R|SP)$)|(^I[XY]\W)/);
+    }
+
+    /**
+     * @param operand the candidate operand
+     * @param expectedOperand the expected operand
+     * @returns Compares both operands as numbers. E.g. allows to compare decimal with hexadecimal.
+     * If one is no number then false is returned.
+     * If both represent numbers and match true is returned.
+     */
+    private compareNumbers(operand: string, expectedOperand: string): boolean {
+        const val1 = this.parseValue(operand);
+        if (isNaN(val1))
+            return false;
+        const val2 = this.parseValue(expectedOperand);
+        if (isNaN(val2))
+            return false;
+        return val1 == val2;
+    }
+
+
+    /**
+     * Parses the string as a number.
+     * Understands following formats: decimal, hex (0x, $, h).
+     * Can't deal with negative numbers.
+     * @param value The string to parse.
+     * @returns The number value (Or NAN).
+     */
+    private parseValue(value: string) {
+        // Check if number (if it starts with a digit)
+        if (!/^\d/.test(value)) {
+            if (value.startsWith('$'))
+                return parseInt(value.substring(1), 16);
+            return NaN;
+        }
+        // Check format
+        if (value.startsWith('0x') || value.endsWith('h') || value.endsWith('H'))
+            return parseInt(value, 16);
+        // Otherwise try decimal
+        return parseInt(value, 10);
     }
 }
