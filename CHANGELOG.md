@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.1.1
+- Fixed #6: RST not shown correctly: "RST 0"
+
 # 1.1.0
 - Added undocumented IX/IY bit instructions (DDCB, FDCB).
 - Removed unused files.
