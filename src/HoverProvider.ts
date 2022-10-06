@@ -1,4 +1,3 @@
-'use strict';
 import * as vscode from 'vscode';
 import { Z80InstructionSet } from './z80InstructionSet';
 import { extractInstruction, getLegend, getFlagsMdTable } from './HoverUtils';

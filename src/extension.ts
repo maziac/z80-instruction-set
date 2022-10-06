@@ -1,5 +1,3 @@
-'use strict';
-
 import * as vscode from 'vscode';
 import { HoverProvider } from './HoverProvider';
 import { Z80InstructionsView } from './Z80InstructionsView';
