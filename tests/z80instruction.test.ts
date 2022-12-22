@@ -2,10 +2,10 @@ import {strict as assert} from 'assert';
 import {Z80Instruction} from '../src/z80instruction';
 
 
-suite('z80Instruction', () => {
+describe('z80Instruction', () => {
     const instr = new Z80Instruction( 'example' ,'','','','','','','') as any;
 
-    suite('parseValue', () => {
+    describe('parseValue', () => {
         test('NaN', () => {
             let res = instr.parseValue('XYZ');
             assert.ok(isNaN(res));
@@ -34,7 +34,7 @@ suite('z80Instruction', () => {
         });
     });
 
-    suite('compareNumbers', () => {
+    describe('compareNumbers', () => {
         test('NaN', () => {
             let res = instr.compareNumbers('0', '');
             assert.ok(res == false);

@@ -2,12 +2,12 @@ import {strict as assert} from 'assert';
 import {Z80InstructionSet} from '../src/z80instructionSet';
 
 
-suite('z80instructionSet', () => {
+describe('z80instructionSet', () => {
     const instr = Z80InstructionSet.instance as any;
 
-    suite('parseInstruction', () => {
+    describe('parseInstruction', () => {
 
-        suite('RST', () => {
+        describe('RST', () => {
 
             test('RST 0', () => {
                 let res = instr.parseInstruction("RST 0");

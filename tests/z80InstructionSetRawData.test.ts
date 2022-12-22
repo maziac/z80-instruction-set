@@ -2,7 +2,7 @@ import {strict as assert} from 'assert';
 import { z80InstructionSetRawData } from '../src/z80InstructionSetRawData';
 
 
-suite('Z80InstructionSet', () => {
+describe('Z80InstructionSet', () => {
 
 	test('InstructionsComplete', () => {
 		// Check count

@@ -2,8 +2,8 @@ import * as assert from 'assert';
 import { extractInstruction, getLegend, getFlagsMdTable } from '../src/HoverUtils';
 
 
-suite('HoverUtils', () => {
-    suite('extractInstruction', () => {
+describe('HoverUtils', () => {
+    describe('extractInstruction', () => {
 
         test('extractInstruction', () => {
             let res = extractInstruction("LD A,B", 0);
@@ -204,7 +204,7 @@ suite('HoverUtils', () => {
     });
 
 
-    suite('getLegend', () => {
+    describe('getLegend', () => {
         test('getLegend', () => {
             assert.equal(undefined, getLegend('LD H,D'));
             assert.equal("b=0-7 (bit)", getLegend('BIT b,(HL)'));
@@ -219,7 +219,7 @@ suite('HoverUtils', () => {
     });
 
 
-    suite('getFlagsMdTable', () => {
+    describe('getFlagsMdTable', () => {
         test('getFlagsMdTable', () => {
             const header = '|S|Z|H|P|N|C|\n|-|-|-|-|-|-|\n';
             assert.equal('', getFlagsMdTable(undefined));
