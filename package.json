@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -21,12 +21,12 @@
     "engines": {
         "vscode": "^1.61.0"
     },
-    "icon": "assets/icon.png",
+    "icon": "assets/local/icon.png",
     "categories": [
         "Programming Languages"
     ],
     "activationEvents": [
-        "*"
+        "onStartupFinished"
     ],
     "main": "./out/src/extension",
     "contributes": {
