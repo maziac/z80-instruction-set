@@ -17,7 +17,7 @@ export function extractInstruction(line: string, index: number): string {
             break;
     }
     pos++;
-    let rightString = line.substr(pos);
+    let rightString = line.substring(pos);
 
     // Now find end of instruction, i.e. until ";", "//" or ":"
     let len=0;

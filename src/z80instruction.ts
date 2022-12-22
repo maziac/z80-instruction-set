@@ -17,7 +17,7 @@ export class Z80Instruction {
     private operands: string[] | undefined;
     private implicitAccumulatorSyntaxAllowed: boolean | undefined;
 
-    constructor(
+    constructor(// NOSONAR
         instruction: string,
         z80Timing: string, z80M1Timing: string, cpcTiming: string,
         opcode: string, size: string, flags: string, description: string) {
@@ -92,18 +92,18 @@ export class Z80Instruction {
      * @returns the mnemonic
      */
     public getMnemonic(): string {
-        return this.mnemonic
-            ? this.mnemonic
-            : this.mnemonic = extractMnemonicOf(this.instruction);
+        if (!this.mnemonic)
+            this.mnemonic = extractMnemonicOf(this.instruction);
+        return this.mnemonic;
     }
 
     /**
      * @returns the operands
      */
     public getOperands(): string[] {
-        return this.operands
-            ? this.operands
-            : this.operands = extractOperandsOf(this.instruction);
+        if (!this.operands)
+            this.operands = extractOperandsOf(this.instruction);
+        return this.operands;
     }
 
     /**
