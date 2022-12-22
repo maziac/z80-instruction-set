@@ -1,5 +1,4 @@
-import {resourceUsage} from 'process';
-import {parseTimings, extractMnemonicOf, extractOperandsOf} from './z80Utils';
+import {parseTimings, extractMnemonicOf, extractOperandsOf} from './z80utils';
 
 export class Z80Instruction {
 
