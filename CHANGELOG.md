@@ -1,5 +1,12 @@
 # Changelog
 
+
+# 1.2.0
+- Packed with esbuild.
+- Fixed #14: Wrong legend inc ix
+- activationEvent changed to "onStartupFinished".
+- Tests changed from Mocha to jest.
+
 # 1.1.1
 - Fixed #6: RST not shown correctly: "RST 0"
 
