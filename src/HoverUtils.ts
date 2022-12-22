@@ -1,4 +1,4 @@
-import * as assert from 'assert';
+import {strict as assert} from 'assert';
 
 /**
  * Extracts the instruction from an input line. index points to the

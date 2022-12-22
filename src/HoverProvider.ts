@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { Z80InstructionSet } from './z80InstructionSet';
+import { Z80InstructionSet } from './z80instructionSet';
 import { extractInstruction, getLegend, getFlagsMdTable } from './HoverUtils';
 
 
