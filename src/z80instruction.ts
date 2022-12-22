@@ -117,10 +117,12 @@ export class Z80Instruction {
         }
 
         if (this.getMnemonic() === "LD") {
-            return this.implicitAccumulatorSyntaxAllowed = false;
+            this.implicitAccumulatorSyntaxAllowed = false;
+            return this.implicitAccumulatorSyntaxAllowed;
         }
         const operands = this.getOperands();
-        return this.implicitAccumulatorSyntaxAllowed = operands.length === 2 && operands[0] === "A";
+        this.implicitAccumulatorSyntaxAllowed = (operands.length === 2 && operands[0] === "A");
+        return this.implicitAccumulatorSyntaxAllowed;
     }
 
     /**
@@ -230,12 +232,10 @@ export class Z80Instruction {
                 // (due possibility of using constants, labels, and expressions in the source code,
                 // there is no proper way to discriminate: b, n, nn, o.
                 // but uses a "best effort" to discard registers)
-                return this.isAnyRegister(
-                    this.isIndirectionOperand(candidateOperand, false)
+                const op = this.isIndirectionOperand(candidateOperand, false)
                         ? this.extractIndirection(candidateOperand)
-                        : candidateOperand)
-                    ? 0
-                    : 0.75;
+                        : candidateOperand;
+                return (this.isAnyRegister(op)) ? 0 : 0.75;
         }
     }
 
@@ -244,7 +244,7 @@ export class Z80Instruction {
      * @returns true if the candidate operand must match verbatim the operand of the instruction
      */
     private isVerbatimOperand(operand: string): boolean {
-        return !!operand.match(/^(A|AF'?|BC?|N?C|DE?|E|HL?|L|I|I[XY]|R|SP|N?Z|M|P[OE]?)$/);
+        return !!operand.match(/^(A|AF'?|BC?|N?C|DE?|E|HL?|L|I|I[XY]|R|SP|N?Z|M|P[OE]?)$/); // NOSONAR
     }
 
     /**
@@ -390,7 +390,7 @@ export class Z80Instruction {
      * false otherwise
      */
     private isAnyRegister(operand: string): boolean {
-        return !!operand.match(/(^(A|AF'?|BC?|C|DE?|E|HL?|L|I|I[XY][UHL]?|R|SP)$)|(^I[XY]\W)/);
+        return !!operand.match(/(^(A|AF'?|BC?|C|DE?|E|HL?|L|I|I[XY][UHL]?|R|SP)$)|(^I[XY]\W)/); // NOSONAR
     }
 
     /**
