@@ -28,7 +28,7 @@
     "activationEvents": [
         "onStartupFinished"
     ],
-    "main": "./out/src/extension",
+    "main": "./out/extension.js",
     "contributes": {
         "configuration": {
             "type": "object",
@@ -70,17 +70,22 @@
         ]
     },
     "scripts": {
-        "compile": "tsc -p ./",
-        "tslint": "eslint ./**/*.ts",
-        "watch": "tsc -w -p ./",
-        "test": "mocha -u tdd ./out/tests/",
+        "vscode:prepublish": "npm run esbuild-base -- --minify",
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+        "compile": "npm run esbuild-base -- --sourcemap",
+        "watch": "npm run esbuild-base -- --sourcemap --watch",
         "package": "vsce package",
-        "publish": "vsce publish"
+        "test": "jest --coverage"
+
     },
     "devDependencies": {
-        "@types/mocha": "^9.0.0",
         "@types/node": "^16.11.4",
+        "@jest/globals": "^29.3.1",
         "@types/vscode": "^1.61.0",
+        "esbuild": "^0.16.10",
+        "esbuild-jest": "^0.5.0",
+        "jest": "^29.3.1",
+        "source-map-support": "^0.5.21",
         "typescript": "^4.4.4"
     }
 }

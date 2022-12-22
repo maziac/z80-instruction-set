@@ -3,11 +3,11 @@
 If you like "Z80 Instruction Set" please consider supporting it.
 
 <a href="https://github.com/sponsors/maziac" title="Github sponsor">
-	<img src="assets/button_donate_sp.png" />
+	<img src="assets/remote/button_donate_sp.png" />
 </a>
 &nbsp;&nbsp;
 <a href="https://www.paypal.com/donate/?hosted_button_id=K6NNLZCTN3UV4&locale.x=en_DE&Z3JncnB0=" title="PayPal">
-	<img src="assets/button_donate_pp.png" />
+	<img src="assets/remote/button_donate_pp.png" />
 </a>
 
 
@@ -16,7 +16,7 @@ If you like "Z80 Instruction Set" please consider supporting it.
 This is a hover provider for vscode.
 I.e. if you hover over a Z80 instruction (e.g. "LD A,5") the opcode and a description for the instruction is displayed.
 
-![](assets/hover.jpg)
+![](assets/remote/hover.jpg)
 
 Note: It does also show the opcodes for the Z80N instructions (ZX Spectrum Next).
 
@@ -43,7 +43,7 @@ It supports the following assembler file extensions:
 To view all instructions open the command palette (press F1) and enter "Show all Z80 instructions".
 A WebView opens with the instructions.
 
-![](assets/Z80InstructionsView.jpg)
+![](assets/remote/Z80InstructionsView.jpg)
 
 
 To search the instructions press "CTRL-F".

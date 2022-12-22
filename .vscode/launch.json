@@ -7,29 +7,18 @@
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
-            "args": ["--extensionDevelopmentPath=${workspaceFolder}" ],
-            "sourceMaps": true,
-            "outFiles": [ "${workspaceFolder}/out/src/**/*.js" ]
-        },
-
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Tests",
-            "cwd": "${workspaceFolder}",
-            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
             "args": [
-                "-u",
-                "tdd",
-                "--timeout",
-                "999999",
-                "--colors",
-                "./out/tests/"
+                //"--disable-extensions",
+                "--extensionDevelopmentPath=${workspaceFolder}"
             ],
+            "sourceMaps": true,
             "outFiles": [
-                "${workspaceFolder}/out/**/*.js"
+                "${workspaceFolder}/out/extension.js"
             ],
-            "internalConsoleOptions": "openOnSessionStart"
+            "preLaunchTask": "watch",
+            "skipFiles": [
+                "**/extensionHostProcess.js"
+            ]
         }
     ]
 }
