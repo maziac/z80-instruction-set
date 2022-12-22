@@ -33,7 +33,7 @@ export function extractInstruction(line: string, index: number): string {
         prev=ch;
         len++;
     }
-    let rawInstruction = rightString.substr(0, len).trim().toUpperCase();
+    let rawInstruction = rightString.substring(0, len).trim().toUpperCase();
     rawInstruction = rawInstruction.replace(/\s+/, ' ');
 
     return rawInstruction;
@@ -206,7 +206,7 @@ export function getFlagsDescription(flags: string): string {
     assert(result.length > 0, 'Problem with flags definition!');
 
     // Remove last ','
-    result = result.substr(0, result.length - 2);
+    result = result.substring(0, result.length - 2);
 
     return result;
 }
