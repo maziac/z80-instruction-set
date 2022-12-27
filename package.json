@@ -76,11 +76,10 @@
         "watch": "npm run esbuild-base -- --sourcemap --watch",
         "package": "vsce package",
         "test": "jest --coverage"
-
     },
     "devDependencies": {
-        "@types/node": "^16.11.4",
         "@jest/globals": "^29.3.1",
+        "@types/node": "^16.11.4",
         "@types/vscode": "^1.61.0",
         "esbuild": "^0.16.10",
         "esbuild-jest": "^0.5.0",
