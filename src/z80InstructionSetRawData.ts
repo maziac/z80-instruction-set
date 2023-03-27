@@ -337,6 +337,7 @@ export const z80InstructionSetRawData = [
 	["RRC r", "8", "10", "2", "CB 08+r", "2", "**0P0*", "Rotate r right with CY, 0>7>6>5>4>3>2>1>0>CY" ],
 	["RRCA", "4", "5", "1", "0F", "1", "--0-0*", "Rotate A right with CY, 0>7>6>5>4>3>2>1>0>CY" ],
 	["RRD", "18", "20", "5", "ED 67", "2", "**0P0-", "A.0-3 := [HL].0-3, [HL].4-7 := A.0-3, [HL].0-3 := [HL].4-7 " ],
+
 	["RST 0", "11", "12", "4", "C7", "1", "", "SP := SP-2, [SP+1,SP] := PC, PC := 00h" ],
 	["RST 8H", "11", "12", "4", "CF", "1", "", "SP := SP-2, [SP+1,SP] := PC, PC := 08h" ],
 	["RST 10H", "11", "12", "4", "D7", "1", "", "SP := SP-2, [SP+1,SP] := PC, PC := 10h" ],
@@ -345,6 +346,7 @@ export const z80InstructionSetRawData = [
 	["RST 28H", "11", "12", "4", "EF", "1", "", "SP := SP-2, [SP+1,SP] := PC, PC := 28h" ],
 	["RST 30H", "11", "12", "4", "F7", "1", "", "SP := SP-2, [SP+1,SP] := PC, PC := 30h" ],
 	["RST 38H", "11", "12", "4", "FF", "1", "", "SP := SP-2, [SP+1,SP] := PC, PC := 38h" ],
+
 	["SBC A,(HL)", "7", "8", "2", "9E", "1", "***V1*", "A := A-[HL]-CY" ],
 	["SBC A,(IX+o)", "19", "21", "3", "DD 9E o", "3", "***V1*", "A := A-[IX+o]-CY" ],
 	["SBC A,(IY+o)", "19", "21", "3", "FD 9E o", "3", "***V1*", "A := A-[IY+o]-CY" ],

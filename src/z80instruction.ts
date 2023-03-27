@@ -421,12 +421,12 @@ export class Z80Instruction {
     private parseValue(value: string) {
         // Check if number (if it starts with a digit)
         if (!/^\d/.test(value)) {
-            if (value.startsWith('$'))
+            if (value.startsWith('$') || value.startsWith('#'))
                 return parseInt(value.substring(1), 16);
             return NaN;
         }
-        // Check format
-        if (value.startsWith('0x') || value.endsWith('h') || value.endsWith('H'))
+        // Check format (Note: "0x1234" has been capitalized to "0X1234" already. parseint is able to parse both.
+        if (value.startsWith('0x') || value.startsWith('0X') || value.endsWith('h') || value.endsWith('H'))
             return parseInt(value, 16);
         // Otherwise try decimal
         return parseInt(value, 10);

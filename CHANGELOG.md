@@ -1,5 +1,7 @@
 # Changelog
 
+# 1.2.1
+- Fix for #13: Don't recognize RST with # number
 
 # 1.2.0
 - Packed with esbuild.
