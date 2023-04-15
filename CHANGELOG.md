@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.2.2
+- Fix for #15: Incorrect description of the effect on the carry flag in I/O commands
+
 # 1.2.1
 - Fix for #13: Don't recognize RST with # number
 
