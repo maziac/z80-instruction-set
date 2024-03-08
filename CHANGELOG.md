@@ -1,11 +1,13 @@
 # Changelog
 
+# 1.2.3
+- Fix for #17: Flags for INI/INIR/IND/INDR/OUTI/OUTD/OTIR/OTDR and IN x,(C)
+
 # 1.2.2
 - Fix for #15: Incorrect description of the effect on the carry flag in I/O commands.
 - Changed carry flag for OUTI, OUTD, OTIR, OTDR, INI, IND, INIR, INDR.
 - Changed flags for LD A,I and LD A,R.
 - Fixed ":=" notation of a few commands.
-
 
 # 1.2.1
 - Fix for #13: Don't recognize RST with # number
