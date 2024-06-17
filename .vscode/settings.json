@@ -5,22 +5,6 @@
 	"files.trimTrailingWhitespace": true,
 	"editor.insertSpaces": false,
 
-	"mocha.files.glob": "out/tests/*.js",
-	"mocha.options": {
-		"ui": "tdd",
-		//, "watch-extensions": "tsx,ts"
-		/*
-		"compilers": {
-			"ts": "ts-node/register"
-		  }
-		  */
-	},
-	"mocha.logVerbose": true,
-	"mocha.requires": [
-		"ts-node/register"
-	],
-	"mocha.runTestsOnSave": "false",
-
 	"search.exclude": {
 		"**/out": true,
 		"**/node_modules": true,
