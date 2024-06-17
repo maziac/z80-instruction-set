@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.2.4
+- Package update.
+
 # 1.2.3
 - Fix for #17: Flags for INI/INIR/IND/INDR/OUTI/OUTD/OTIR/OTDR and IN x,(C)
 
