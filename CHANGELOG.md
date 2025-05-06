@@ -1,5 +1,8 @@
 # Changelog
 
+# 1.2.
+- Dependencies updated.
+
 # 1.2.4
 - Package update.
 

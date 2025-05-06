@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "1.2.4",
+    "version": "1.2.5",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -75,15 +75,16 @@
         "compile": "npm run esbuild-base -- --sourcemap",
         "watch": "npm run esbuild-base -- --sourcemap --watch",
         "package": "vsce package",
-        "test": "jest --coverage"
+        "test": "jest"
     },
     "devDependencies": {
-        "@types/jest": "^29.5.12",
         "@types/node": "^20.11.25",
         "@types/vscode": "^1.71.0",
-        "esbuild": "^0.17.19",
-        "esbuild-jest-transform": "^2.0.0",
+        "@types/jest": "^29.5.14",
         "jest": "^29.7.0",
-        "typescript": "^5.4.2"
+        "ts-jest": "^29.3.2",
+        "ts-node-dev": "^2.0.0",
+        "typescript": "^5.7.3",
+        "esbuild": "^0.25.4"
     }
 }
