@@ -75,7 +75,8 @@
         "compile": "npm run esbuild-base -- --sourcemap",
         "watch": "npm run esbuild-base -- --sourcemap --watch",
         "package": "vsce package",
-        "test": "jest"
+        "test": "jest",
+        "npm audit --omit=dev": "env -u npm_config_allow_scripts -u NPM_CONFIG_ALLOW_SCRIPTS npm audit --omit=dev"
     },
     "devDependencies": {
         "@types/node": "^20.11.25",
