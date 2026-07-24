@@ -43,6 +43,11 @@
                     "type": "string",
                     "default": "https://zany80.github.io/documentation/Z80/UserManual.html",
                     "description": "Link to Z80 documentation. You can change this e.g. to point to your local Z80 manual pdf. Use an empty string \"\" to disable."
+                },
+                "z80-instruction-set.files": {
+                    "type": "string",
+                    "default": "*.{asm,a80,inc,list,s}",
+                    "description": "File patterns for Z80 assembly files. You can change this to match your project's file extensions. Instruction documentation will only be shown for files matching this pattern."
                 }
             }
         },
@@ -50,22 +55,6 @@
             {
                 "command": "z80-instruction-set.show-all-instructions",
                 "title": "Show all Z80 instructions"
-            }
-        ],
-        "languages": [
-            {
-                "id": "asm-collection",
-                "extensions": [
-                    ".list",
-                    ".lis",
-                    ".a80",
-                    ".asm",
-                    ".inc",
-                    ".s"
-                ],
-                "aliases": [
-                    "Assembler file"
-                ]
             }
         ]
     },

@@ -1,6 +1,8 @@
 # Changelog
 
-# 1.2.
+# 1.2.5
+- languages.id removed.
+- 'files' configuration added.
 - Dependencies updated.
 
 # 1.2.4

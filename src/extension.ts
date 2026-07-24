@@ -27,7 +27,7 @@ function configure(context: vscode.ExtensionContext) {
 
     // Note: don't add 'language' property, otherwise other extension with similar file pattern may not work.
     // If the identifier is missing it also don't help to define it in package.json. And if "id" would be used it clashes again with other extensions.
-    const asmFiles: vscode.DocumentSelector = {scheme: "file", pattern: settings.files};
+    const asmFiles: vscode.DocumentSelector = {scheme: "file", pattern: "**/" + settings.files};
 
     // Deregister
     if (regHoverProvider) {
