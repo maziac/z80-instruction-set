@@ -1,7 +1,7 @@
 {
     "name": "z80-instruction-set",
     "displayName": "Z80 Instruction Set",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "publisher": "maziac",
     "description": "Provides documentation of the Z80 instructions on hovering.",
     "author": {
@@ -46,8 +46,8 @@
                 },
                 "z80-instruction-set.files": {
                     "type": "string",
-                    "default": "*.{asm,a80,inc,list,s}",
-                    "description": "File patterns for Z80 assembly files. You can change this to match your project's file extensions. Instruction documentation will only be shown for files matching this pattern."
+                    "default": "asm,inc,list",
+                    "description": "File extensions for Z80 assembly files. You can change this to match your project's file extensions. Instruction documentation will only be shown for files matching this pattern."
                 }
             }
         },

@@ -27,7 +27,14 @@ function configure(context: vscode.ExtensionContext) {
 
     // Note: don't add 'language' property, otherwise other extension with similar file pattern may not work.
     // If the identifier is missing it also don't help to define it in package.json. And if "id" would be used it clashes again with other extensions.
-    const asmFiles: vscode.DocumentSelector = {scheme: "file", pattern: "**/" + settings.files};
+    let extensions = settings.files;
+    if (extensions.startsWith("*.{") && extensions.endsWith("}")) {
+        extensions = extensions.substring(3, extensions.length - 1);
+    }
+    // Add upper case
+    extensions = extensions.toLowerCase() + ',' + extensions.toUpperCase();
+    const pattern = "**/*.{" + extensions + "}";
+    const asmFiles: vscode.DocumentSelector = {scheme: "file", pattern: pattern};
 
     // Deregister
     if (regHoverProvider) {
